@@ -1,0 +1,90 @@
+(() => {
+  const SELECTOR = ".wp-tab-bar, .tool-tab-bar";
+
+  let activeContainer = null;
+  let isDown = false;
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  // tweak αυτά:
+  const DRAG_THRESHOLD_PX = 6;
+
+  function getContainerFromEventTarget(target) {
+    if (!target) return null;
+    return target.closest ? target.closest(SELECTOR) : null;
+  }
+
+  function onPointerDown(e) {
+    // μόνο αριστερό mouse / primary touch
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+
+    const container = getContainerFromEventTarget(e.target);
+    if (!container) return;
+
+    activeContainer = container;
+    isDown = true;
+    isDragging = false;
+
+    startX = e.clientX;
+    startScrollLeft = container.scrollLeft;
+
+    // κρατάμε capture για να συνεχίζει το drag ακόμα κι αν φύγει από το element
+    try { container.setPointerCapture(e.pointerId); } catch (_) {}
+
+    container.classList.add("dragging");
+
+    // σημαντικό: σταματά text-selection/drag εικόνων κ.λπ.
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!isDown || !activeContainer) return;
+
+    const dx = e.clientX - startX;
+
+    if (!isDragging && Math.abs(dx) > DRAG_THRESHOLD_PX) {
+      isDragging = true;
+    }
+
+    if (isDragging) {
+      activeContainer.scrollLeft = startScrollLeft - dx;
+      e.preventDefault();
+    }
+  }
+
+  function stopDrag(e) {
+    if (!activeContainer) return;
+
+    isDown = false;
+
+    activeContainer.classList.remove("dragging");
+
+    // αφήνουμε activeContainer για λίγο ώστε το click-cancel να ξέρει αν έγινε drag
+    // και μετά το καθαρίζουμε.
+    setTimeout(() => {
+      activeContainer = null;
+      isDragging = false;
+    }, 0);
+  }
+
+  // Αν έγινε drag, ακυρώνουμε το click ώστε να μην κάνει “select tab” κατά λάθος
+  function onClickCapture(e) {
+    if (!isDragging) return;
+    const container = getContainerFromEventTarget(e.target);
+    if (!container) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+
+  // listeners μια φορά, δουλεύουν και μετά από Dash rerenders
+  document.addEventListener("pointerdown", onPointerDown, { passive: false });
+  document.addEventListener("pointermove", onPointerMove, { passive: false });
+  document.addEventListener("pointerup", stopDrag, { passive: true });
+  document.addEventListener("pointercancel", stopDrag, { passive: true });
+
+  // click-cancel σε capture phase
+  document.addEventListener("click", onClickCapture, true);
+})();

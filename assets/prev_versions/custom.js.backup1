@@ -1,0 +1,26 @@
+// Το custom script σου - φορτώνεται αυτόματα από το Dash
+document.addEventListener('DOMContentLoaded', function () {
+    const box = document.getElementById('box');
+    const cursorDisplay = document.getElementById('cursor-position');
+
+    // Ανίχνευση mouse position
+    document.addEventListener('mousemove', function (e) {
+        cursorDisplay.innerText = `Cursor: ${e.clientX}, ${e.clientY}`;
+    });
+
+    // Αριστερό ή δεξί κλικ στο κουτί
+    box.addEventListener('mousedown', function (e) {
+        if (e.button === 0) {
+            // Left click: Κάνε πράσινο background
+            box.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
+        } else if (e.button === 2) {
+            // Right click: Κάνε κόκκινο background
+            box.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+        }
+    });
+
+    // Προλαμβάνει το default context menu στο right-click
+    box.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
+});

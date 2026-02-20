@@ -1,0 +1,121 @@
+/* --- Ribbon --- */
+.ribbon-container {
+    display: flex;
+    align-items: center;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 10px;
+    height: 38px;
+    position: relative;
+}
+
+.ribbon-tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.ribbon-tab {
+    padding: 4px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+.ribbon-tab:hover {
+    background-color: #d9d9d9;
+}
+
+/* --- Submenus (click reveal) --- */
+#submenu-container {
+    position: relative;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    min-width: 150px;
+    padding: 4px 0;
+    z-index: 50;
+}
+.submenu div {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.submenu div:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- Cable Layout --- */
+.cable-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    height: 180px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.cable-svg-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cable-svg {
+    width: 90%;
+    height: 100%;
+}
+
+/* --- PMU Icons --- */
+.pmu-icon {
+    max-height: 80px;
+    object-fit: contain;
+}
+.pmu-icon.left { margin-left: 10px; }
+.pmu-icon.right { margin-right: 10px; }
+
+/* --- Animated Cable --- */
+.line-flow {
+    stroke-dasharray: 8,4;
+    animation: move-dash 1.2s linear infinite;
+}
+@keyframes move-dash {
+    to { stroke-dashoffset: -12; }
+}
+
+.arrow-flow {
+    fill: #888;
+    animation: pulse-flow 2s infinite ease-in-out;
+}
+@keyframes pulse-flow {
+    0%,100% { fill: #888; }
+    50% { fill: #f0c300; }
+}
+
+.arrow-data {
+    fill: #cc6666;
+    animation: pulse-data 1.5s infinite;
+}
+@keyframes pulse-data {
+    0%,100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* --- Info Panel --- */
+.pmu-info {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+}

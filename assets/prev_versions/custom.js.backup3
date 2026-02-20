@@ -1,0 +1,64 @@
+window.addEventListener('load', () => {
+  // Η βασική αρχικοποίηση των listeners
+  function init() {
+    const box = document.getElementById('box');
+    const cursorDisplay = document.getElementById('cursor-position');
+    const jsResponseDiv = document.getElementById('js-response-data');
+
+    if (!box || !cursorDisplay || !jsResponseDiv) {
+      setTimeout(init, 100);
+      return;
+    }
+
+    let currentImage = 1;
+
+    document.addEventListener('mousemove', e => {
+      cursorDisplay.textContent = `Cursor: ${e.clientX}, ${e.clientY}`;
+    });
+
+    box.addEventListener('mousedown', e => {
+      let responseText = '';
+      if (e.button === 0) {
+        if (currentImage === 1) {
+          box.style.backgroundImage = 'url("/assets/subsea-cables-internet-ai-spooky-pooka-illustration.jpg")';
+          currentImage = 2;
+        } else {
+          box.style.backgroundImage = 'url("/assets/Undersea-Cables.jpeg")';
+          currentImage = 1;
+        }
+        box.style.backgroundColor = 'transparent';
+        responseText = `Left Click: (${e.clientX}, ${e.clientY})`;
+      } else if (e.button === 2) {
+        box.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+        responseText = `Right Click: (${e.clientX}, ${e.clientY})`;
+      }
+      jsResponseDiv.textContent = responseText;
+    });
+
+    box.addEventListener('contextmenu', e => e.preventDefault());
+  }
+
+  // Κάνουμε retry μέχρι να βρούμε και το #tab-change
+  function initObserver() {
+    const tabChangeDiv = document.getElementById('tab-change');
+    if (!tabChangeDiv) {
+      setTimeout(initObserver, 100);
+      return;
+    }
+
+    const observer = new MutationObserver(mutations => {
+      for (let m of mutations) {
+        if (m.type === 'childList' && tabChangeDiv.textContent === 'trigger') {
+          init();                       // ξανα-τρέχουμε τους listeners
+          tabChangeDiv.textContent = ''; // καθαρίζουμε το flag
+        }
+      }
+    });
+
+    observer.observe(tabChangeDiv, { childList: true });
+  }
+
+  // Ξεκινάμε και τις δύο διαδικασίες
+  init();
+  initObserver();
+});

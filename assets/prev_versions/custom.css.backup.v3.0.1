@@ -1,0 +1,145 @@
+/* ============================================================
+   CABLEGNOSIS Demo Platform – Global Styling (v3.3)
+   Author: [Your Name]
+   Last updated: January 2026
+   ------------------------------------------------------------
+   • Consistent UI across tabs
+   • Scrollable / dropdown adaptive tab bar
+   • Modular layout ready for future extensions
+   ============================================================ */
+
+/* === Base UI styling === */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Headers and Text === */
+h1, h2, h3 {
+    color: #003366;
+    margin-top: 0;
+}
+
+/* === Buttons & Inputs === */
+button, input, select {
+    font-family: inherit;
+}
+
+button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/* === Graph containers === */
+.js-plotly-plot {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* === Info Panels (common style) === */
+.pmu-info, .info-box {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* === Dropdowns (Dash default override) === */
+.Select-control {
+    border-radius: 4px !important;
+}
+
+/* ============================================================
+   SCROLLABLE TABS FIX (Flex layout + responsive sizing)
+   ============================================================ */
+
+/* Container for the tab bar */
+.dash-tabs {
+    display: flex !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    scrollbar-width: thin;   /* Firefox */
+}
+
+/* Each tab (dcc.Tab) */
+.dash-tab {
+    flex: 0 0 220px;                /* fixed width per tab */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal !important;
+    border-right: 1px solid #eee;
+    background-color: #fafafa;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover and active tab styles */
+.dash-tab:hover {
+    background-color: #e8f0ff;
+}
+.dash-tab--selected {
+    background-color: #d0e3ff !important;
+    border-bottom: 3px solid #003366 !important;
+    font-weight: bold;
+}
+
+/* Responsive behavior */
+@media (max-width: 1200px) {
+    .dash-tab { flex: 0 0 180px; }
+}
+@media (min-width: 1600px) {
+    .dash-tab { flex: 0 0 260px; }
+}
+
+/* Scrollbar customization (Chrome / Edge / Safari) */
+.dash-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+.dash-tabs::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 3px;
+}
+.dash-tabs::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* ============================================================
+   GENERAL UTILITY CLASSES
+   ============================================================ */
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 10px;
+}
+
+/* ============================================================
+   FOOTER (optional)
+   ============================================================ */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+}

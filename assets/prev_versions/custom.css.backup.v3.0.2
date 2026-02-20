@@ -1,0 +1,168 @@
+/* ============================================================
+   CABLEGNOSIS Demo Platform – Global Styling (FINAL)
+   ------------------------------------------------------------
+   • Default mode: logical wrap
+   • Scrollable mode: FIXED width + horizontal scroll
+   ============================================================ */
+
+/* === Base UI styling === */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Headers === */
+h1, h2, h3 {
+    color: #003366;
+    margin-top: 0;
+}
+
+/* === Buttons & Inputs === */
+button, input, select {
+    font-family: inherit;
+}
+
+button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/* === Graph containers === */
+.js-plotly-plot {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* === Info Panels === */
+.pmu-info, .info-box {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* === Dash Dropdown override === */
+.Select-control {
+    border-radius: 4px !important;
+}
+
+/* ============================================================
+   TABS – BASE (no layout logic here)
+   ============================================================ */
+
+.dash-tabs {
+    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+}
+
+.dash-tab {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 8px 12px;
+    background-color: #fafafa;
+    border-right: 1px solid #eee;
+
+    white-space: normal !important;
+    word-break: break-word;
+    line-height: 1.2;
+
+    transition: background-color 0.2s ease;
+}
+
+/* Hover & active tab */
+.dash-tab:hover {
+    background-color: #e8f0ff;
+}
+
+.dash-tab--selected {
+    background-color: #d0e3ff !important;
+    border-bottom: 3px solid #003366 !important;
+    font-weight: bold;
+}
+
+/* ============================================================
+   DEFAULT MODE — LOGICAL WRAP
+   ============================================================ */
+
+.tabs-default .dash-tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.tabs-default .dash-tab {
+    flex: 1 1 220px;
+    max-width: 320px;
+}
+
+/* ============================================================
+   SCROLLABLE MODE — FIXED WIDTH + SCROLL
+   ============================================================ */
+
+.tabs-scrollable .dash-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    scrollbar-gutter: stable both-edges;
+}
+
+.tabs-scrollable .dash-tab {
+    flex: 0 0 260px !important;   /* CRITICAL */
+    max-width: 260px !important;
+}
+
+/* Scrollbar (Chrome / Edge / Safari) */
+.tabs-scrollable .dash-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tabs-scrollable .dash-tabs::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 3px;
+}
+
+.tabs-scrollable .dash-tabs::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* ============================================================
+   GENERAL UTILITIES
+   ============================================================ */
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 10px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+}

@@ -1,0 +1,107 @@
+/* --- Ribbon --- */
+.ribbon-container {
+    display: flex;
+    align-items: center;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 10px;
+    height: 38px;
+    position: relative;
+}
+
+.ribbon-tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.ribbon-tab {
+    padding: 4px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+.ribbon-tab:hover {
+    background-color: #d9d9d9;
+}
+
+/* --- Submenus --- */
+#submenu-container {
+    position: relative;
+    height: 0;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    top: 38px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    min-width: 140px;
+    padding: 4px 0;
+    z-index: 50;
+}
+.submenu div {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.submenu div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hover logic */
+#tab-home:hover ~ #submenu-container #submenu-home,
+#tab-data:hover ~ #submenu-container #submenu-data,
+#tab-view:hover ~ #submenu-container #submenu-view,
+#tab-settings:hover ~ #submenu-container #submenu-settings {
+    display: block;
+}
+
+/* --- Cable & PMU Layout --- */
+.cable-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    height: 180px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cable-svg-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cable-svg {
+    width: 90%;
+    height: 100%;
+}
+
+.pmu-icon {
+    max-height: 80px;
+    object-fit: contain;
+}
+.pmu-icon.left {
+    margin-left: 10px;
+}
+.pmu-icon.right {
+    margin-right: 10px;
+}
+
+/* --- Info panel --- */
+.pmu-info {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+}

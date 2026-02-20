@@ -1,0 +1,151 @@
+(() => {
+  /*
+    Vertical resize for bar CONTAINERS (not buttons).
+
+    FIXED:
+    - Baseline is stored ONCE (data-baseline-height) so min height
+      does NOT drift after resizing. (This fixes "cannot shrink".)
+    - touch-action:none on handles (CSS) prevents page scrolling during drag.
+  */
+
+  const STORAGE_KEY = "cablegnosis_bar_heights_v2";
+
+  const TARGETS = [
+    { hostSelector: "#wp-bar-container", key: "wp" },
+    { hostSelector: "#tool-bar-container", key: "tool" }, // αν δε θες secondary, σβήστο
+  ];
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+    catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function getBaseline(host) {
+    // ------------------------------------------------------------
+    // FIX: baseline must be stable (first-render), not recomputed
+    // after resizing.
+    // ------------------------------------------------------------
+    const existing = host.getAttribute("data-baseline-height");
+    if (existing) return parseInt(existing, 10);
+
+    const h = Math.round(host.getBoundingClientRect().height || host.offsetHeight || 0);
+    if (h > 0) host.setAttribute("data-baseline-height", String(h));
+    return h;
+  }
+
+  function ensureHandles(host, key) {
+    // Create handles once
+    let topH = host.querySelector(".tabbar-v-handle.top");
+    let botH = host.querySelector(".tabbar-v-handle.bottom");
+
+    if (!topH) {
+      topH = document.createElement("div");
+      topH.className = "tabbar-v-handle top";
+      topH.title = "Drag to resize height";
+      host.appendChild(topH);
+    }
+
+    if (!botH) {
+      botH = document.createElement("div");
+      botH.className = "tabbar-v-handle bottom";
+      botH.title = "Drag to resize height";
+      host.appendChild(botH);
+    }
+
+    const baseline = getBaseline(host);
+    if (!baseline) return;
+
+    const minH = baseline;               // stable min (baseline)
+    const maxH = Math.round(baseline * 2);
+
+    // Apply persisted height if exists (clamped)
+    const state = loadState();
+    if (state[key]) {
+      const clamped = Math.max(minH, Math.min(maxH, state[key]));
+      host.style.height = `${clamped}px`;
+    } else {
+      // Ensure we have an explicit height so drag math is stable
+      host.style.height = `${Math.round(host.getBoundingClientRect().height)}px`;
+    }
+
+    function attachDrag(handleEl, direction) {
+      let dragging = false;
+      let startY = 0;
+      let startH = 0;
+
+      handleEl.addEventListener("pointerdown", (e) => {
+        dragging = true;
+        startY = e.clientY;
+        startH = host.getBoundingClientRect().height;
+
+        handleEl.setPointerCapture(e.pointerId);
+
+        // Important: avoid scroll/selection and avoid interfering with other listeners
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      handleEl.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+
+        const dy = e.clientY - startY;
+        const delta = direction === "bottom" ? dy : -dy;
+
+        const newH = Math.max(minH, Math.min(maxH, Math.round(startH + delta)));
+        host.style.height = `${newH}px`;
+
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      handleEl.addEventListener("pointerup", (e) => {
+        if (!dragging) return;
+        dragging = false;
+
+        const finalH = Math.round(host.getBoundingClientRect().height);
+        const st = loadState();
+        st[key] = finalH;
+        saveState(st);
+
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      handleEl.addEventListener("pointercancel", () => { dragging = false; });
+    }
+
+    // Attach once per handle (avoid stacking listeners on re-render)
+    if (!topH.getAttribute("data-bound")) {
+      attachDrag(topH, "top");
+      topH.setAttribute("data-bound", "1");
+    }
+    if (!botH.getAttribute("data-bound")) {
+      attachDrag(botH, "bottom");
+      botH.setAttribute("data-bound", "1");
+    }
+  }
+
+  function boot() {
+    for (const t of TARGETS) {
+      const host = document.querySelector(t.hostSelector);
+      if (!host) continue;
+      ensureHandles(host, t.key);
+    }
+
+    // Dash rerenders containers -> re-ensure handles (but baseline stays stable)
+    const mo = new MutationObserver(() => {
+      for (const t of TARGETS) {
+        const host = document.querySelector(t.hostSelector);
+        if (!host) continue;
+        ensureHandles(host, t.key);
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+  }
+
+  window.addEventListener("load", boot);
+})();

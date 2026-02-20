@@ -1,0 +1,76 @@
+/* === css compatible with app.py.backup_v3.4 === */
+/* === Base UI styling for all tabs === */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* === Buttons & Inputs === */
+button, input, select {
+    font-family: inherit;
+}
+
+button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/* === Graph containers === */
+.js-plotly-plot {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* === Info Panels (common style) === */
+.pmu-info, .info-box {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* === Dropdowns (Dash defaults override) === */
+.Select-control {
+    border-radius: 4px !important;
+}
+
+/* ===================================================== */
+/*                TABS SCROLLABLE FIX                    */
+/* ===================================================== */
+
+/* Wrapper for scrollable tabs */
+.dash-tabs {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    display: block !important;
+    width: 700px;             /* 2.5 tabs approx visible */
+    margin: 0 auto;
+    scrollbar-width: thin;    /* Firefox */
+}
+
+/* Each tab keeps fixed width and inline layout */
+.dash-tab {
+    display: inline-block !important;
+    width: 220px;             /* Adjust width per tab */
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal !important;
+}
+
+/* Tab label styling */
+.dash-tab > div {
+    padding: 8px 12px;
+}
+
+/* Optional scrollbar visual tweaks */
+.dash-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+.dash-tabs::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 3px;
+}
+.dash-tabs::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}

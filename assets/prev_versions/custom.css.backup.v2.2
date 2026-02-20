@@ -1,0 +1,59 @@
+/* Ribbon style */
+.ribbon-bar {
+    display: flex;
+    align-items: center;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 10px;
+    gap: 16px;
+    height: 38px;
+    position: relative;
+}
+
+.ribbon-tab {
+    padding: 4px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+.ribbon-tab:hover {
+    background-color: #d9d9d9;
+}
+
+/* Dropdown submenus */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 42px;
+    left: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    min-width: 160px;
+    z-index: 1000;
+    padding: 4px 0;
+}
+.menu-item {
+    padding: 6px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hover logic for dropdowns */
+#tab-home:hover ~ #ucy-ribbon-menus #submenu-home,
+#tab-data:hover ~ #ucy-ribbon-menus #submenu-data,
+#tab-view:hover ~ #ucy-ribbon-menus #submenu-view,
+#tab-settings:hover ~ #ucy-ribbon-menus #submenu-settings {
+    display: block;
+}
+
+/* Ensure dropdowns close visually when not hovered */
+#ucy-ribbon-menus:hover .submenu {
+    display: none;
+}

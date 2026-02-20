@@ -1,0 +1,11 @@
+/* Scrollbar styling for scrollable tabs */
+#tabs-container::-webkit-scrollbar {
+  height: 6px;
+}
+#tabs-container::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 3px;
+}
+#tabs-container::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
