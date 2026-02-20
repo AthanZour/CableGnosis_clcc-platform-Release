@@ -1,0 +1,16 @@
+"""Flask routes for auxiliary pages like the popup toolbox."""
+
+
+def register_routes(server):
+    """Register Flask routes with the Dash server instance."""
+
+    @server.route("/toolbox")
+    def toolbox_page():
+        return """
+        <html><head><title>Toolbox</title></head>
+        <body style="font-family:Arial; padding:16px">
+          <h2>Auxiliary Toolbox</h2>
+          <p>This popup window was opened from the KPI section.
+          It can host configuration panels, logs, or analysis widgets.</p>
+        </body></html>
+        """
