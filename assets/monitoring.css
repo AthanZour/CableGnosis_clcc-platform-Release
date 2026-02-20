@@ -1,0 +1,254 @@
+/* === Monitoring Tab Specific === */
+.monitoring-tab {
+    padding: 10px 20px;
+}
+
+/* === Ribbon Bar === */
+.ribbon-container {
+    display: flex;
+    align-items: center;
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 10px;
+    height: 38px;
+    position: relative;
+}
+
+.ribbon-tab {
+    position: relative;
+    padding: 4px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.ribbon-tab:hover {
+    background-color: #d9d9d9;
+}
+
+/* === Submenus (each under its tab) === */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;  /* εμφανίζεται κάτω από το tab */
+    left: 0;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 99;
+    min-width: 160px;
+    padding: 4px 0;
+}
+
+.submenu .menu-item {
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 1px solid #eee;
+}
+
+.submenu .menu-item:last-child {
+    border-bottom: none;
+}
+
+.submenu .menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* === Cable Layout === */
+.cable-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    height: 180px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cable-img {
+    flex-grow: 1;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* === PMU Icons === */
+.pmu-icon {
+    max-height: 80px;
+    object-fit: contain;
+}
+.pmu-icon.left { margin-left: 10px; }
+.pmu-icon.right { margin-right: 10px; }
+
+/* === Modal popups (Toolbox / Import / Coordinates) === */
+#coord-modal,
+#import-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    width: 450px;
+    max-width: 95%;
+    text-align: left;
+    animation: fadeIn 0.25s ease;
+}
+
+.modal-content h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #eaeaea;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ============================================================
+   VISUAL SEPARATORS & SPACING
+   ============================================================ */
+
+.divider-primary {
+    height: 3px;
+    background: #6b7a90;
+    margin: 10px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.divider-secondary {
+    height: 1px;
+    background: #c9d2dd;
+    margin: 8px 0;
+}
+
+.wp-bar-wrapper,
+.tool-bar-wrapper {
+    padding: 6px 0;
+    margin: 6px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* ============================================================
+   HVDC KPI STRIP – Telemetry Integrity
+   ============================================================ */
+
+.hvdc-kpi-strip {
+    display: flex;
+    gap: 12px;
+    margin: 10px 0 20px 0;
+    flex-wrap: wrap;
+}
+
+.hvdc-kpi-box {
+    background: #f4f7fb;
+    border: 1px solid #cfd8e3;
+    border-radius: 6px;
+    padding: 10px 14px;
+    min-width: 180px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.hvdc-kpi-title {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.hvdc-kpi-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f3b63;
+}
+
+
+/* ============================================================
+   HVDC Integrity Indicator – reliable CSS hooks
+   ============================================================ */
+
+/* Κάνει το indicator block πιο compact */
+.hvdc-integrity-indicator {
+    max-width: 520px;     /* προαιρετικό: να μην απλώνει */
+}
+
+/* ΜΟΝΟ το κύριο KPI number (μεγάλο font) */
+.hvdc-integrity-indicator
+.hvdc-indicator-graph
+svg
+text[font-size="64px"],
+.hvdc-integrity-indicator
+.hvdc-indicator-graph
+svg
+text[font-size="72px"] {
+    font-size: 42px !important;
+    font-weight: 600 !important;
+}
+
+/* Subtitle: Temporal consistency • Jitter • Latency compliance */
+.hvdc-integrity-indicator
+.hvdc-indicator-graph
+svg
+text
+tspan[style*="font-size:12px"] {
+    font-size: 15px !important;
+    fill: #666 !important;
+}
+
+/* ============================================================
+   Center HVDC Integrity KPI block
+   ============================================================ */
+
+/* Κεντράρει ΟΛΟ το KPI section */
+.hvdc-integrity-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* οριζόντιο κέντρο */
+    justify-content: center;
+    margin: 0 auto;          /* κέντρο στο page */
+    text-align: center;
+}
+
+/* Κεντράρει και το Plotly graph */
+.hvdc-integrity-indicator .hvdc-indicator-graph {
+    margin: 0 auto;
+}
+
+/* Κεντράρει το KPI strip (Latency / Jitter / etc) */
+.hvdc-kpi-strip {
+    justify-content: center;
+}

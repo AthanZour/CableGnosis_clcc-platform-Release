@@ -1,0 +1,1672 @@
+/* ============================================================
+   CABLEGNOSIS – CLEAN UI BASELINE (SCADA STYLE – STABLE)
+   ============================================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+/* ============================================================
+   TAB ORCHESTRATOR HEADER (COOLER BLUE)
+   ============================================================ */
+
+.tab-header-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 4px 16px;
+    /*background: #e8f1fb; */             /* cooler light blue */
+    /* border-bottom: 1px solid #b9cbe3; */
+    background: #6f87a6; /*#6f87a6*/;
+    border-bottom: 1px solid #a6bfdc;
+}
+
+.tab-view-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 240px;
+}
+
+.tab-view-mode em {
+    font-size: 12px;
+    color: #6f6f6f;
+}
+
+/* Compact dropdown */
+.tab-view-mode .Select-control {
+    min-height: 28px !important;
+    height: 28px !important;
+    font-size: 14px;
+}
+
+/* Centered mode info (legacy – will be moved later) */
+.contextual-info {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    color: #5a5a5a;
+}
+
+/* ============================================================
+   PRIMARY TAB BAR – WORK PACKAGES (ENERGY / AMBER)
+   ============================================================ */
+
+.wp-tab-bar {
+    display: flex;
+    overflow-x: auto;
+    background: #ffffff;              /* very light amber */
+    /*border-bottom: 1px solid #f0e0cc;*/
+}
+
+/* WP tab buttons */
+.wp-tab-bar .tab-btn {
+    flex: 0 0 280px;
+    padding: 10px 14px;
+    font-size: 16px;
+    /*background: #fffdf9;*/
+    border: none;
+    border-right: 1px solid #ddd;
+    /* color: #2f2f2f; */                   /* engineering dark grey */
+    /* font-weight: 500; */
+     background: #ffffff; 
+    color: #3f5f82;        /* steel blue text */
+    font-weight: 500;
+}
+
+/* Hover */
+.wp-tab-bar .tab-btn:hover {
+    /* background: rgba(255, 170, 60, 0.12); */
+    background: #f2f6fb;  /* very light blue */
+}
+
+/* Active */
+.wp-tab-bar .tab-btn.active {
+    background: #12335a;
+    color: #f2f6fb;               /* near-white for contrast */
+    font-weight: 800;
+    border-bottom: 3px solid #ff9800; /* strong orange accent */
+}
+
+/* Native scrollbar – SCADA feel */
+.wp-tab-bar::-webkit-scrollbar {
+    height: 10px;
+}
+
+.wp-tab-bar::-webkit-scrollbar-thumb {
+    background: #9e9e9e;
+    border-radius: 6px;
+}
+
+.wp-tab-bar::-webkit-scrollbar-track {
+    background: #e6e6e6;
+}
+
+/* ============================================================
+   SCADA SEPARATOR BETWEEN BARS (CSS ONLY)
+   ============================================================ */
+
+/*.wp-tab-bar::after {
+    content: "";
+    display: block;
+    height: 24px;
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 11px,
+            #b5b5b5 12px,
+            #b5b5b5 13px,
+            transparent 14px
+        );
+    flex: 0 0 100%;
+} */
+
+/* ============================================================
+   SECONDARY TAB BAR – TOOLS (GREEN)
+   ============================================================ */
+
+.tool-tab-bar {
+    display: flex;
+    overflow-x: auto;
+    background: #ffffff;
+}
+
+/* Tool buttons */
+.tool-tab-bar .tab-btn {
+    flex: 0 0 200px;
+    padding: 6px 12px;
+    font-size: 14px;
+    background: #f9fdfb;
+    border: none;
+    border-radius: 6px;
+    margin: 6px;
+    color: #1a1a1a;
+}
+
+/* Hover */
+.tool-tab-bar .tab-btn:hover {
+    background: #e8f1fb;
+}
+
+/* Active */
+.tool-tab-bar .tab-btn.active {
+    background: #e3f3ea;
+    font-weight: 600;
+}
+
+/* Native scrollbar – same SCADA style */
+.tool-tab-bar::-webkit-scrollbar {
+    height: 10px;
+}
+
+.tool-tab-bar::-webkit-scrollbar-thumb {
+    background: #9e9e9e;
+    border-radius: 6px;
+}
+
+.tool-tab-bar::-webkit-scrollbar-track {
+    background: #e6e6e6;
+}
+
+/* ============================================================
+   CONTENT SEPARATOR (UNDER TOOLS)
+   ============================================================ */
+
+.content-separator {
+    height: 1px;
+    background: #b5b5b5;
+    margin: 16px 0;
+}
+
+/* ============================================================
+   SCADA PAN / DRAG BEHAVIOR
+   ============================================================ */
+
+.wp-tab-bar,
+.tool-tab-bar {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    touch-action: pan-y; /* επιτρέπει κάθετο scroll σε touch */
+}
+
+.wp-tab-bar.dragging,
+.tool-tab-bar.dragging {
+    cursor: grabbing;
+}
+
+.contextual-info {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contextual-info .context-strong {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   TOOL TAB BAR – BLUE CONSISTENCY PATCH
+   ============================================================ */
+
+/* Non-active tool tabs */
+.tool-tab-bar .tab-btn {
+    background: #f2f6fb;   /* very light blue */
+    color: #3f5f82;        /* steel blue text */
+    font-weight: 500;
+}
+
+/* Active tool tab */
+.tool-tab-bar .tab-btn.active {
+    background: #4b5563;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ============================================================
+   SEPARATOR – ORCHESTRATOR → WP BAR (TRIPLE)
+   ============================================================ */
+
+.sep-orch-wp {
+    height: 48px;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(
+            to bottom,
+            #7b8fa8 0px,        /* thin dark blue */
+            #7b8fa8 2px,
+
+            transparent 2px,
+            transparent 16px,
+
+            #d6e1ef 16px,      /* thick light blue */
+            #d6e1ef 28px,
+
+            transparent 28px,
+            transparent 36px,
+
+            #e6edf7 36px,      /* thin very light */
+            #e6edf7 38px,
+
+            transparent 38px
+        );
+}
+
+.sep-wp-tool {
+    height: 24px;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 10px,
+            #c3d2e6 11px,
+            #c3d2e6 14px,
+            transparent 15px
+        );
+}
+
+.sep-tool-content {
+    height: 12px;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 5px,
+            #dde6f2 6px,
+            #dde6f2 7px,
+            transparent 8px
+        );
+}
+
+
+/* Ensure white background between structural sections */
+.sep-orch-wp,
+#wp-bar-container,
+.sep-wp-tool,
+#tool-bar-container,
+.sep-tool-content,
+#content-container {
+    background-color: #ffffff;
+}
+
+
+
+/* ============================================================
+   TAB ORCHESTRATOR – WHITE PREMIUM VERSION
+   ============================================================ */
+
+.tab-header-row {
+    background-color: #ffffff;
+    border-bottom: 1px solid #c3d2e6;
+}
+
+/* "Tab Orchestrator" label */
+.tab-header-row em {
+    color: #3f5f82;
+}
+
+/* Mode text */
+.contextual-info {
+    color: #0b1f3b;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   TAB ORCHESTRATOR – MODE / SELECTED TEXT
+   ============================================================ */
+
+.contextual-info {
+    color: #3f5f82;        /* steel blue */
+    font-size: 14px;
+}
+
+.contextual-info .context-strong {
+    color: #6b7280;        /* deep industrial blue */
+    font-weight: 600;
+}
+
+/* ============================================================
+   TAB ORCHESTRATOR – TECHNICAL LINES
+   ============================================================ */
+
+/* Line 1 – delimiter (short, neutral) */
+.orch-line-delimiter {
+    height: 2px;
+    width: 120px;              /* μικρότερο μήκος */
+    background-color: #A4ADB3; /* technical grey */
+    margin: 1px 0 0px 0;
+}
+
+/* Line 2 – closing line (longer, light blue) */
+.orch-line-closing {
+    height: 3px;
+    width: 220px;              /* μεγαλύτερο μήκος */
+    background-color: #92BEF7; /* light structural blue */
+    margin: 0 0 3px 0;
+}
+
+
+/* ============================================================
+   HIDE HORIZONTAL SCROLLBARS (WP & TOOL BARS)
+   ============================================================ */
+
+/* Chrome, Edge, Safari */
+.wp-tab-bar::-webkit-scrollbar,
+.tool-tab-bar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Firefox */
+.wp-tab-bar,
+.tool-tab-bar {
+    scrollbar-width: none;
+}
+
+/* IE / legacy Edge */
+.wp-tab-bar,
+.tool-tab-bar {
+    -ms-overflow-style: none;
+}
+
+
+/* ============================================================
+   TOOL TAB BAR – BLUE CONSISTENCY (CORE)
+   ============================================================ */
+
+.tool-tab-bar {
+    background: #ffffff;
+}
+
+.tool-tab-bar .tab-btn {
+    background: #f2f6fb;
+    color: #3f5f82;
+    font-weight: 500;
+}
+
+.tool-tab-bar .tab-btn.active {
+    background: #4b5563;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ============================================================
+   PLATFORM VERSION / RUNTIME INFO (CORE)
+   Fine-tuning controls exposed
+   ============================================================ */
+
+.platform-version {
+    font-size: 12px;          /* βασικό μέγεθος γραμματοσειράς */
+    line-height: 1.2;         /* ↓ έλεγχος συνολικού ύψους block */
+    color: #6b7280;           /* light industrial grey */
+    margin-top: 0px;          /* απόσταση από separator */
+    margin-bottom: 0px;       /* απόσταση από επόμενο block */
+    padding: 0;               /* μηδενικό padding */
+    white-space: nowrap;      /* κρατάει τη γραμμή compact */
+}
+
+/* italic descriptor (π.χ. "c-lcc platform version") */
+.platform-version em {
+    font-style: italic;
+    font-size: 12px;          /* explicit, για future tweaks */
+    line-height: 1.2;
+    color: #9ca3af;           /* πιο ανοιχτό grey */
+    margin-right: 4px;
+}
+
+/* highlighted values (version, python, dash) */
+.platform-version span {
+    font-size: 12px;
+    line-height: 1.2;
+    color: #64748b;           /* muted steel blue */
+    font-weight: 500;
+}
+
+/* ============================================================
+   HEADER – VERSION SEPARATOR (CORE, TEMP)
+   Will move to patches later
+   ============================================================ */
+
+.header-separator {
+    width: 410px;          /* ΜΗΚΟΣ – παίξε εδώ */
+    height: 1px;           /* ΠΑΧΟΣ */
+    margin: 6px 0 4px auto;/* θέση: πάνω από version, δεξιά */
+    border: none;
+    background-color: #c7d2e3; /* light steel blue */
+    opacity: 0.9;
+}
+
+/* ============================================================
+   Tab Context Header (inline, compact, right-aligned)
+   ============================================================ */
+
+/* Wrapper: full width, pushes content to the right */
+.tab-context-container {
+    display: flex;
+    justify-content: flex-end;
+
+    background-color: transparent;
+    padding: 1px 3px;
+}
+
+/* Actual context box (shrink-to-fit) */
+.tab-context-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+
+    font-size: 13px;
+    color: #374151;
+
+    background-color: #ffffff;
+    padding: 6px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+/* Text parts */
+.context-inline-label {
+    color: #6b7280;
+}
+
+.context-inline-value {
+    font-weight: 500;
+    color: #111827;
+}
+
+/* Info circle with ? */
+.context-info-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    margin-left: 3px;
+
+    border-radius: 50%;
+    border: 1px solid #9ca3af;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+
+    cursor: pointer;
+    user-select: none;
+
+    background-color: #f9fafb;
+}
+
+.context-info-circle:hover {
+    background-color: #e5e7eb;
+    border-color: #6b7280;
+}
+
+/* ============================================================
+   Tabs Content – White Canvas
+   ============================================================ */
+
+.tabs-content-container {
+    background-color: #ffffff;
+
+    padding-top: 4px;      /* ⬅ τραβάει content προς τα πάνω */
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 16px;
+
+    min-height: 60vh;
+}
+
+/* ============================================================
+   Tab Content – Technical Separator
+   ============================================================ */
+
+.tab-content-separator {
+    background-color: #ffffff;
+    padding: 0px 0px 0px 0px;
+}
+
+/* Primary (thicker) line */
+.tab-sep-primary {
+    height: 3px;
+    background-color: #7b8fa8;   /* structural steel blue */
+    border-radius: 1px;
+}
+
+/* Secondary (thin) line, attached */
+.tab-sep-secondary {
+    height: 1px;
+    background-color: #c3d2e6;   /* lighter technical blue */
+    margin-top: 2px;
+}
+
+/* ============================================================
+   PATCH – HEADER TITLE BLOCK → OPTICAL CENTER
+   ============================================================ */
+
+/* Move ONLY the title / separator / version group left */
+#app-header-text {
+    margin-left: auto;
+    margin-right: 560px;   /* ⬅️ παίξε εδώ (80–160px) */
+}
+
+
+/* ============================================================
+   PATCH – APP HEADER TEXT (FULL CSS CONTROL)
+   ============================================================ */
+
+/* Container of title + separator + version */
+#app-header-text {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 560px;   /* ⬅️ MAIN KNOB */
+}
+
+/* ------------------------------------------------------------
+   Title
+   ------------------------------------------------------------ */
+#app-header-title {
+    color: #003366;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Separator
+   ------------------------------------------------------------ */
+#app-header-separator {
+    width: 410px;          /* ⬅️ independent knob */
+    height: 1px;
+    margin: 6px 0 4px auto;
+    border: none;
+    background-color: #c7d2e3;
+}
+
+/* ============================================================
+   SCADA / HMI HEADER – INLINE TITLE + RUNTIME METADATA
+   ------------------------------------------------------------
+   Design goals:
+   • single-line header
+   • minimal vertical height
+   • metadata as secondary annotation
+   • no decorative separators
+   • full CSS control (no Python visuals)
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   Header text container
+   ------------------------------------------------------------
+   Responsibilities:
+   • holds title + metadata in one line
+   • controls overall horizontal position
+   • aligns elements on text baseline (SCADA standard)
+   ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------
+   Header title (primary signal)
+   ------------------------------------------------------------
+   Responsibilities:
+   • dominant visual element
+   • stable, readable from distance
+   • no decorative effects
+   ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------
+   Version / runtime metadata container
+   ------------------------------------------------------------
+   Responsibilities:
+   • secondary, index-like annotation
+   • minimal visual weight
+   • inline with title
+   ------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------
+   Metadata parentheses
+   ------------------------------------------------------------
+   Responsibilities:
+   • visually group metadata
+   • clarify secondary nature
+   • avoid separators or lines
+   ------------------------------------------------------------ */
+#app-header-text {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+
+    margin-left: auto;
+    margin-right: 0px;   /* ⬅️ παίξε εδώ */
+}
+
+#app-header-title {
+    font-size: 30px;
+    font-weight: 550;
+    letter-spacing: 0.2px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#app-header-version {
+    font-size: 10px;
+    line-height: 1;
+    color: #9ca3af;
+    white-space: nowrap;
+    transform: translateY(-1px);
+}
+
+#app-header-version::before { content: "("; margin-right: 2px; }
+#app-header-version::after  { content: ")"; margin-left: 2px; }
+
+#app-header-separator {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------
+   Metadata descriptor (e.g. "c-lcc platform version")
+   ------------------------------------------------------------
+   Responsibilities:
+   • descriptive but very low emphasis
+   • readable without competing with values
+   ------------------------------------------------------------ */
+#app-header-version em {
+    font-style: normal;           /* SCADA: no italics */
+    font-size: 9.5px;
+    color: #b0b7c3;
+    margin-right: 4px;
+}
+
+
+/* ------------------------------------------------------------
+   Metadata values (version numbers, runtime info)
+   ------------------------------------------------------------
+   Responsibilities:
+   • slightly stronger than descriptor
+   • still clearly secondary to title
+   ------------------------------------------------------------ */
+#app-header-version span {
+    font-size: 10px;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+
+/* ============================================================
+   OPTIONAL – MICRO VERTICAL INDEX MARKER (DISABLED)
+   ------------------------------------------------------------
+   Use ONLY if parentheses are not desired.
+   This is an index marker, NOT a separator.
+   ============================================================ */
+
+/*
+#app-header-version {
+    position: relative;
+    padding-left: 10px;
+}
+
+#app-header-version::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+
+    width: 1px;
+    height: 10px;
+    background-color: #d1d5db;
+}
+*/
+
+
+/* ============================================================
+   PATCH – SCADA HEADER HEIGHT COMPRESSION
+   ============================================================ */
+
+/* Overall header container */
+#app-header {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+/* Logo: reduce visual height */
+#app-header-logo {
+    height: 24px !important;     /* SCADA range: 32–38px */
+}
+
+/* Title: tighten vertical metrics */
+#app-header-title {
+    line-height: 1.1;
+}
+
+/* Version metadata: ensure no extra height */
+#app-header-version {
+    line-height: 1;
+}
+
+/* Defensive: remove any accidental margins */
+#app-header h2,
+#app-header hr,
+#app-header div {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   PATCH – HEADER VERSION VERTICAL POSITIONING (SCADA SAFE)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Version container – main vertical control
+   ------------------------------------------------------------
+   Use:
+   • translateY(+) → move DOWN
+   • translateY(-) → move UP
+   Recommended range: -2px … +4px
+   ------------------------------------------------------------ */
+#app-header-version {
+    transform: translateY(0.5px);   /* ⬅️ MAIN VERTICAL KNOB */
+}
+
+/* ------------------------------------------------------------
+   Fine tuning per sub-part (OPTIONAL)
+   ------------------------------------------------------------
+   Enable ONLY if you need asymmetric adjustment
+   ------------------------------------------------------------ */
+
+/*
+#app-header-version em {
+    transform: translateY(1px);   // descriptor down
+}
+
+#app-header-version span {
+    transform: translateY(0px);   // values baseline
+}
+*/
+
+/* ------------------------------------------------------------
+   Alternative approach (if transforms feel wrong)
+   ------------------------------------------------------------
+   Use margin-top instead of transform
+   (less optical, more structural)
+   ------------------------------------------------------------ */
+
+/*
+#app-header-version {
+    margin-top: 2px;
+}
+*/
+
+
+/* ============================================================
+   SCADA HEADER – ACTION ICONS (RIGHT SIDE)
+   ============================================================ */
+
+/* Container for right-side icons */
+#app-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;                 /* spacing between icons */
+    margin-left: auto;         /* ensure right alignment */
+}
+
+/* Base icon styling */
+#app-header-actions img {
+    height: 100%;              /* ⬅️ use full header height */
+    max-height: 28px;          /* SCADA sweet spot */
+    width: auto;
+
+    cursor: pointer;
+    opacity: 0.85;
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+/* Hover feedback (SCADA-safe, not flashy) */
+#app-header-actions img:hover {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+/* Active / pressed feedback */
+#app-header-actions img:active {
+    transform: scale(0.95);
+}
+
+/* Optional: visually emphasize login/user */
+#header-icon-login {
+    margin-left: 6px;
+}
+
+/* ============================================================
+   PATCH – HEADER LOGO VISUAL BALANCE
+   ============================================================ */
+
+#app-header-logo {
+    height: 40px !important;   /* πριν ~36px → τώρα πιο ισορροπημένο */
+}
+
+/* ============================================================
+   PATCH – SCADA STICKY HEADER
+   ============================================================ */
+
+/* Make header sticky */
+#app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;            /* πάνω από tabs / content */
+    background-color: #ffffff;
+}
+
+/* Safety: prevent content from sliding under header */
+body {
+    scroll-padding-top: 56px; /* ≈ header height */
+}
+
+/* ------------------------------------------------------------
+   System / Brand
+   ------------------------------------------------------------ */
+#app-header-title .app-header-system {
+    font-size: 22px;
+    font-weight: 550;
+    color: #003366;
+}
+
+/* ------------------------------------------------------------
+   Separator (mid-dot) – shared
+   ------------------------------------------------------------ */
+#app-header-title .app-header-separator {
+    font-size: 16px;
+    font-weight: 500;
+    color: #003366;
+    translateY(0.5px);
+    margin: 0 6px;           /* ⬅️ ΕΔΩ ρυθμίζεις το spacing */
+    line-height: 1;
+}
+
+/* ------------------------------------------------------------
+   Scope / Mode
+   ------------------------------------------------------------ */
+#app-header-title .app-header-scope {
+    font-size: 20px;
+    font-weight: 350;
+    color: #003366;
+    font-style: italic;
+}
+
+/* ------------------------------------------------------------
+   Active unit / module
+   ------------------------------------------------------------ */
+#app-header-title .app-header-unit {
+    font-size: 23px;
+    font-weight: 700;
+    color: #003366;
+
+    margin-left: 0;          /* ⬅️ ΔΕΝ χρειάζεται πια */
+}
+
+===============================================
+   PATCH – VERSION INFO POPOVER (SINGLE SOURCE OF TRUTH)
+   ------------------------------------------------------------
+   Τι πετυχαίνει:
+   • Σταθερό SCADA popover για version/runtime info
+   • Click-to-open + click-outside-to-close (μέσω backdrop)
+   • Αγκύρωση στο trigger (όχι στο #app-header-text) για σωστό positioning
+   • Εξουδετέρωση duplicates (προτεραιότητα στις τελευταίες ρυθμίσεις)
+   Τι να αλλάξεις (knobs):
+   • Panel position: top / left / transform
+   • Panel size: padding / font-size
+   • Visual: border color / radius / shadow
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   Header height compression (keeps your intent)
+   Επιλογές:
+   • padding-top/bottom: μειώνει/αυξάνει ύψος header
+   ------------------------------------------------------------ */
+#app-header {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+
+/* ------------------------------------------------------------
+   Trigger anchor (critical for correct popover placement)
+   Επιλογές:
+   • inline-flex κρατάει κουμπί + popover ως "μονάδα"
+   • position: relative δίνει reference στο absolute panel
+   ------------------------------------------------------------ */
+#app-header-version-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+/* ------------------------------------------------------------
+   Version info button (icon button)
+   Επιλογές:
+   • border-radius: 999px → pill
+   • padding: μεγαλώνει/μικραίνει το hit area
+   • border color: πιο “τεχνικό” ή πιο “flat”
+   ------------------------------------------------------------ */
+.version-info-button {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+
+/* ------------------------------------------------------------
+   Version info icon size
+   Επιλογές:
+   • width/height: 12–16px typical SCADA header icon size
+   ------------------------------------------------------------ */
+.version-info-icon {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ------------------------------------------------------------
+   Backdrop for click-outside close
+   Επιλογές:
+   • z-index: πρέπει να είναι κάτω από panel
+   • background: transparent (SCADA) ή rgba(...) αν θες dim (όχι recommended)
+   ------------------------------------------------------------ */
+#app-header-version-backdrop {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 1500;
+}
+
+
+/* ------------------------------------------------------------
+   Popover panel placement + visuals
+   Επιλογές (κύρια knobs):
+   • top: πόσο κάτω από το κουμπί
+   • left: 0 για align με κουμπί, 50% για center
+   • transform: none ή translateX(...) για micro-align
+   Visual knobs:
+   • border: #12335A brand
+   • radius: 6–10px
+   • shadow: ελαφρύ, SCADA-safe
+   ------------------------------------------------------------ */
+#app-header-version-panel.version-info-panel {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  left: 0;          /* κάτω από το κουμπί */
+  right: auto;      /* neutralize old right:0 */
+  transform: none;  /* neutralize old translateX(...) */
+
+  padding: 8px 10px;
+
+  background: #ffffff;
+  border: 1px solid #12335A;
+  border-radius: 6px;
+
+  font-size: 11px;
+  color: #475569;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  z-index: 2000;    /* πάνω από backdrop */
+}
+
+
+/* ------------------------------------------------------------
+   Panel content typography (SCADA readable)
+   Επιλογές:
+   • vip-title weight
+   • vip-row line-height: 1.3–1.5
+   ------------------------------------------------------------ */
+.vip-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.vip-row {
+  line-height: 1.4;
+}
+
+
+/* ------------------------------------------------------------
+   Typography reset INSIDE the panel (prevents style bleed)
+   Επιλογές:
+   • em italic ON/OFF (SCADA συνήθως OFF)
+   • span weight: values slightly stronger
+   ------------------------------------------------------------ */
+#app-header-version-panel em,
+.version-info-panel em {
+  font-style: normal;
+  color: inherit;
+}
+
+#app-header-version-panel span,
+.version-info-panel span {
+  font-weight: 500;
+}
+
+#app-header-version-panel {
+    text-align: left;   /* ⬅️ δεξιά στοίχιση */
+}
+
+#app-header-version-panel {
+    width: 200px;
+}
+
+.version-info-button {
+    background: white;
+    border: 1px solid #ffffff;   /* ⬅️ ΛΕΥΚΟ περίγραμμα */
+    border-radius: 999px;
+    padding: 4px 6px;
+    cursor: pointer;
+}
+
+/* knob μόνο για το button */
+:root{
+  --version-btn-only-x: -6px;
+  --version-btn-only-y: 2px;
+}
+
+#app-header-version-btn {
+  transform: translate(var(--version-btn-only-x), var(--version-btn-only-y));
+}
+
+
+/* ============================================================
+   VERSION INFO BUTTON – INTERACTION STATES
+   ------------------------------------------------------------
+   Hover  : light blue feedback
+   Active : solid brand blue
+   Focus  : NO black outline (handled below)
+   ============================================================ */
+
+/* Default */
+.version-info-button {
+  /* background: #ffffff; */
+  background: #E4F0FF;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+/* Hover */
+.version-info-button:hover {
+  background-color: #D6E1EF;
+}
+
+/* Active / pressed */
+.version-info-button:active {
+  background-color: #12335A;
+}
+
+/* Icon contrast when active */
+.version-info-button:active .version-info-icon {
+  filter: brightness(0) invert(1); /* icon γίνεται λευκό */
+}
+
+
+/* ============================================================
+   REMOVE FOCUS OUTLINE (SCADA SAFE)
+   ------------------------------------------------------------
+   Prevents black focus ring after ESC key
+   ============================================================ */
+
+.version-info-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.version-info-button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.version-info-button {
+  border: 1px solid #ffffff;  /* καθαρό λευκό περίγραμμα */
+  background: #F1F7FA;
+  /* background: #ffffff; */ */
+}
+
+/* ============================================================
+   HEADER LOGO – CLICKABLE (NO BUTTON LOOK)
+   ============================================================ */
+
+.app-header-logo-button {
+  /* background: transparent;
+  border: none; */
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Optional: subtle hover feedback */
+.app-header-logo-button:hover {
+  opacity: 0.9;
+}
+
+.app-header-logo-button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+
+    line-height: 0;
+    font-size: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   PATCH – WP & TOOL BARS COMPACT SCADA MODE
+   ------------------------------------------------------------
+   Goals:
+   • reduce vertical height of bars
+   • reduce padding of tab items
+   • reduce font size
+   • preserve drag (JS) & active states
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Work Package Bar (top bar)
+   ------------------------------------------------------------ */
+.wp-tab-bar {
+    min-height: 42px;          /* πριν ~60+ */
+    align-items: center;
+}
+
+/* WP items */
+.wp-tab-bar .tab-btn {
+    flex: 0 0 240px;           /* πριν 280px */
+    padding: 6px 10px;         /* ⬅️ σημαντική μείωση */
+    font-size: 14px;           /* πριν 16px */
+    line-height: 1.2;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom-width: 2px;  /* πιο λεπτό active underline */
+}
+
+/* Active WP */
+.wp-tab-bar .tab-btn.active {
+    font-weight: 700;          /* πριν 800 */
+    border-bottom-width: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   Tool Bar (secondary bar)
+   ------------------------------------------------------------ */
+.tool-tab-bar {
+    min-height: 36px;
+    align-items: center;
+}
+
+/* Tool items */
+.tool-tab-bar .tab-btn {
+    flex: 0 0 180px;           /* πριν 200px */
+    padding: 4px 8px;          /* πιο compact */
+    font-size: 13px;           /* πριν 14px */
+    line-height: 1.2;
+
+    margin: 4px;               /* πριν 6px */
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+}
+
+/* Active Tool */
+.tool-tab-bar .tab-btn.active {
+    font-weight: 600;
+}
+
+
+/* ------------------------------------------------------------
+   Drag feedback – keep subtle
+   ------------------------------------------------------------ */
+.wp-tab-bar.dragging .tab-btn,
+.tool-tab-bar.dragging .tab-btn {
+    pointer-events: none;      /* safety: avoid misclicks */
+}
+
+/* ============================================================
+   PATCH – UNIFORM TAB BUTTON HEIGHT (1–2 LINE SAFE)
+   ------------------------------------------------------------
+   Fix:
+   • single-line tabs appearing shorter than multi-line
+   • enforce visual consistency without JS
+   ============================================================ */
+
+/* Work Package buttons */
+.wp-tab-bar .tab-btn {
+    min-height: 44px;          /* ⬅️ KEY FIX */
+    display: flex;
+    align-items: center;
+}
+
+/* Tool buttons */
+.tool-tab-bar .tab-btn {
+    min-height: 36px;          /* slightly smaller secondary bar */
+    display: flex;
+    align-items: center;
+}
+
+/* Optional: improve multi-line readability */
+.wp-tab-bar .tab-btn,
+.tool-tab-bar .tab-btn {
+    line-height: 1.25;
+    white-space: normal;       /* allow wrap */
+}
+
+/* ============================================================
+   PATCH – SCADA SEPARATORS COMPRESSION
+   ------------------------------------------------------------
+   Goal:
+   • reduce vertical noise
+   • thinner lines
+   • tighter stacking between bars & content
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Orchestrator → WP bar separator
+   ------------------------------------------------------------ */
+.sep-orch-wp {
+    height: 28px;            /* πριν 48px */
+    background-size: 100% 28px;
+}
+
+/* ------------------------------------------------------------
+   WP → Tool separator
+   ------------------------------------------------------------ */
+.sep-wp-tool {
+    height: 14px;            /* πριν 24px */
+    background-size: 100% 14px;
+}
+
+/* ------------------------------------------------------------
+   Tool → Content separator
+   ------------------------------------------------------------ */
+.sep-tool-content {
+    height: 8px;             /* πριν 12px */
+    background-size: 100% 8px;
+}
+
+/* ------------------------------------------------------------
+   Tab context → content separator container
+   ------------------------------------------------------------ */
+.tab-content-separator {
+    padding: 0;
+    margin: 2px 0 4px 0;     /* πριν ουσιαστικά “πολύ” */
+}
+
+/* Primary line (structural) */
+.tab-sep-primary {
+    height: 2px;             /* πριν 3px */
+}
+
+/* Secondary line (detail) */
+.tab-sep-secondary {
+    height: 1px;
+    margin-top: 1px;         /* πριν 2px */
+}
+
+/* ------------------------------------------------------------
+   Content container – pull content upwards
+   ------------------------------------------------------------ */
+.tabs-content-container {
+    padding-top: 2px;        /* πριν 4px */
+}
+
+
+/* ============================================================
+   PATCH – ORCHESTRATOR HEADER SCADA COLLAPSE
+   ------------------------------------------------------------
+   Goal:
+   • eliminate vertical gaps
+   • treat orchestrator as control strip
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Header row – kill internal spacing
+   ------------------------------------------------------------ */
+.tab-header-row {
+    padding: 2px 12px;     /* πριν 4px 16px */
+    gap: 8px;              /* πριν 24px ❌ */
+    min-height: unset;
+}
+
+/* ------------------------------------------------------------
+   Left block (title + lines + dropdown)
+   ------------------------------------------------------------ */
+.tab-view-mode {
+    gap: 2px;              /* πριν 4px */
+}
+
+/* ------------------------------------------------------------
+   Orchestrator title
+   ------------------------------------------------------------ */
+.tab-view-mode em {
+    margin: 0;
+    line-height: 1.1;
+}
+
+/* ------------------------------------------------------------
+   Technical lines – remove margins
+   ------------------------------------------------------------ */
+.orch-line-delimiter,
+.orch-line-closing {
+    margin: 0;             /* ⬅️ ΣΚΟΤΩΝΕΙ ΚΕΝΑ */
+}
+
+/* Optional: make lines thinner */
+.orch-line-delimiter {
+    height: 1px;
+}
+
+.orch-line-closing {
+    height: 2px;
+}
+
+/* ------------------------------------------------------------
+   Dropdown – tighter vertical fit
+   ------------------------------------------------------------ */
+.tab-view-mode .Select-control {
+    margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Orchestrator → WP separator (almost zero)
+   ------------------------------------------------------------ */
+.sep-orch-wp {
+    height: 12px;          /* πριν 28px */
+    background-size: 100% 12px;
+}
+
+/* ============================================================
+   PATCH – TAB CONTEXT PILL: LOWER Y + COMPACT HEIGHT
+   Targets: the pill rendered by render_tab_context()
+   ============================================================ */
+
+/* 1) Override the inline margins that pull it upward */
+.tab-context-container {
+  margin-top: 0px !important;     /* kills inline -6px */
+  margin-bottom: 2px !important;  /* tighter than 4px */
+  padding: 0 !important;
+}
+
+/* 2) Slight optical drop (Y) without adding layout gaps */
+.tab-context-inline {
+  transform: translateY(0px);     /* ⬅️ MAIN KNOB (try 3–6px) */
+}
+
+/* 3) Make the pill shorter */
+.tab-context-inline {
+  padding: 4px 8px !important;    /* πριν 6px 10px */
+  font-size: 12px !important;     /* πριν 13px */
+  line-height: 1.1 !important;
+  gap: 4px !important;            /* πριν 3px (ok) αλλά κρατάμε tight */
+}
+
+/* 4) Make the ? circle smaller so it doesn't raise the line box */
+.context-info-circle {
+  width: 16px !important;         /* πριν 18px */
+  height: 16px !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  margin-left: 2px !important;
+}
+
+/* ============================================================
+   PATCH – WP & TOOL BARS: TRUE HEIGHT CONTROL
+   ------------------------------------------------------------
+   Root fix:
+   • eliminate padding-driven bar height
+   • eliminate margin-driven gaps
+   • lock bars as control strips
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   COMMON: both bars
+   ------------------------------------------------------------ */
+.wp-tab-bar,
+.tool-tab-bar {
+    align-items: stretch;     /* ⬅️ critical */
+    line-height: 1;           /* kill inherited line-height */
+}
+
+/* ------------------------------------------------------------
+   WP BAR
+   ------------------------------------------------------------ */
+.wp-tab-bar {
+    min-height: unset !important;
+    height: auto;
+}
+
+/* WP buttons */
+.wp-tab-bar .tab-btn {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+
+    min-height: 36px !important;   /* HARD LOCK */
+    line-height: 1.15 !important;
+
+    align-items: center;
+}
+
+/* ------------------------------------------------------------
+   TOOL BAR
+   ------------------------------------------------------------ */
+.tool-tab-bar {
+    min-height: unset !important;
+    height: auto;
+}
+
+/* Tool buttons */
+.tool-tab-bar .tab-btn {
+    margin: 0 !important;          /* ⬅️ ΚΕΝΟ ΤΕΛΟΣ */
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+
+    min-height: 32px !important;
+    line-height: 1.15 !important;
+
+    align-items: center;
+}
+
+
+/* ============================================================
+   FINAL FIX – ORCHESTRATOR ↔ PRIMARY ↔ SECONDARY GAPS
+   ------------------------------------------------------------
+   Root causes addressed:
+   • tab-header-row padding & border
+   • sep-orch-wp transparent zones
+   • wp-tab-bar line-box behavior
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Orchestrator header: kill bottom gap
+   ------------------------------------------------------------ */
+.tab-header-row {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom-width: 1px;   /* keep line, thinner */
+}
+
+/* ------------------------------------------------------------
+   Orchestrator → WP separator: REAL collapse
+   ------------------------------------------------------------ */
+.sep-orch-wp {
+    height: 6px !important;     /* absolute minimum */
+    background-image: none !important;
+    border-top: 1px solid #c3d2e6;
+}
+
+/* ------------------------------------------------------------
+   WP bar container: no air
+   ------------------------------------------------------------ */
+#wp-bar-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   WP bar: eliminate line-box gap
+   ------------------------------------------------------------ */
+.wp-tab-bar {
+    display: flex;
+    align-items: stretch;
+    line-height: 1;
+    margin: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   WP → Tool separator: collapse
+   ------------------------------------------------------------ */
+.sep-wp-tool {
+    height: 4px !important;
+    background-image: none !important;
+    border-top: 1px solid #dde6f2;
+}
+
+/* ------------------------------------------------------------
+   Tool bar container: tight
+   ------------------------------------------------------------ */
+#tool-bar-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Tool bar itself */
+.tool-tab-bar {
+    display: flex;
+    align-items: stretch;
+    line-height: 1;
+}
+
+/* ============================================================
+   PATCH – LEFT INSET FOR TAB BARS (SCADA EDGE BREATHING)
+   ============================================================ */
+
+/* WP bar container */
+#wp-bar-container {
+    padding-left: 12px !important;   /* ⬅️ main knob */
+}
+
+/* Tool bar container */
+#tool-bar-container {
+    padding-left: 12px !important;   /* ίδιο για συνοχή */
+}
+
+
+/* ============================================================
+   PATCH – EMPTY STATE (NO TOOLS) SCADA STYLE
+   ============================================================ */
+
+.placeholder-box {
+    background: #ffffff;              /* ⬅️ από γκρι → λευκό */
+    border: 1px solid #E1E8F0;
+    border-radius: 6px;
+
+    padding: 20px 24px;
+    margin: 12px 12px 0 12px;
+}
+
+/* Title */
+.placeholder-box h4 {
+    color: #1f2d3d;
+    font-weight: 600;
+}
+
+/* Subtitle */
+.placeholder-box p {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* ============================================================
+   PATCH – ROOT CANVAS BACKGROUND (SCADA MODE)
+   ============================================================ */
+
+/* Force main app background to white */
+body,
+#react-entry-point,
+#_dash-app-content > div {
+    background-color: #ffffff !important;
+}
+
+
+/* ============================================================
+   SCADA HEADER – SETTINGS ICON SPACING PATCH
+   ------------------------------------------------------------
+   Goal:
+   • visually separate Settings from Home
+   • keep neutral SCADA look
+   • no layout / JS changes
+   ============================================================ */
+
+/* Ensure header icons are flex-aligned */
+#app-header-actions {
+    display: flex;
+    align-items: center;
+}
+
+/* Push Settings icon slightly to the right */
+#header-icon-preferences {
+    margin-left: 8px;   /* ← “one click” distance */
+}
+
+/* Optional: slightly separate login from settings */
+#header-icon-login {
+    margin-left: 6px;
+}
+
+
+/* ============================================================
+   DASH DROPDOWN SEARCH – HARD KILL (3.x + 4.x SAFE)
+   ============================================================ */
+
+/* 1. Σβήσε ΟΛΟ το search input */
+.Select__input,
+.Select__input-container,
+.Select__value-container input {
+    display: none !important;
+}
+
+/* 2. Σβήσε magnifier / indicators */
+.Select__indicator,
+.Select__dropdown-indicator,
+.Select__indicator-separator,
+.Select__control svg {
+    display: none !important;
+}
+
+/* 3. Κλείδωσε padding ώστε να μη μένει "κουφάρι" */
+.Select__control,
+.Select-control {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    min-height: 28px;
+}
+
+/* 4. Ευθυγράμμιση selected value */
+.Select__single-value,
+.Select-value-label {
+    margin-left: 0 !important;

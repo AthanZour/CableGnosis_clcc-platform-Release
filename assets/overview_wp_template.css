@@ -1,0 +1,316 @@
+/* ============================================================
+   WP Overview – meta-driven ID scoped
+   Root id: <SERVICE_ID>-root
+   ============================================================ */
+
+[id$="-root"].wp-overview-tab {
+    padding: 14px 18px 40px 18px;
+}
+
+/* ================= HEADER ================= */
+
+[id$="-root"] .wp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+[id$="-root"] .wp-lead {
+    margin-top: 6px;
+    color: #334155;
+    max-width: 980px;
+}
+
+[id$="-root"] .wp-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+[id$="-root"] .wp-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.05);
+}
+
+[id$="-root"] .wp-badge-strong {
+    background: rgba(0,0,0,0.12);
+    font-weight: 600;
+}
+
+/* ================= HERO ================= */
+
+[id$="-root"] .wp-hero {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    margin: 10px 0 18px 0;
+}
+
+[id$="-root"] .wp-hero-left {
+    flex: 0 0 860px;
+    min-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+[id$="-root"] .wp-hero-image {
+    width: 860px;
+    height: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+[id$="-root"] .wp-cursor {
+    display: none;
+}
+
+[id$="-root"] .wp-hero-right {
+    flex: 1 1 auto;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ================= CARDS / TILES ================= */
+
+[id$="-root"] .wp-card {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(15,23,42,0.12);
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+[id$="-root"] .wp-card-compact {
+    padding: 10px 12px;
+}
+
+[id$="-root"] .wp-tile {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(15,23,42,0.10);
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+[id$="-root"] .wp-tile-link {
+    cursor: pointer;
+}
+
+/* ================= GRIDS ================= */
+
+[id$="-root"] .wp-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+[id$="-root"] .wp-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+/* ================= TEXT ================= */
+
+[id$="-root"] .wp-par {
+    color: #334155;
+    margin-bottom: 10px;
+}
+
+/* ================= JUMP BUTTONS ================= */
+
+[id$="-root"] .wp-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+[id$="-root"] .wp-jump-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15,23,42,0.18);
+    background: rgba(255,255,255,0.8);
+    color: #0f172a;
+}
+
+[id$="-root"] .wp-jump-btn:hover {
+    background: rgba(255,255,255,1);
+}
+
+/* ================= SECTIONS ================= */
+
+[id$="-root"] .wp-section {
+    padding: 14px 0 8px 0;
+    border-top: 1px solid rgba(15,23,42,0.12);
+    margin-top: 14px;
+}
+
+[id$="-root"] .wp-callout {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-left: 4px solid rgba(2,132,199,0.55);
+    background: rgba(2,132,199,0.08);
+    border-radius: 10px;
+}
+
+/* ================= MEDIA ================= */
+
+[id$="-root"] .wp-media.ph {
+    margin-top: 10px;
+    height: 120px;
+    border-radius: 12px;
+    border: 1px dashed rgba(15,23,42,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(15,23,42,0.55);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 1200px) {
+    [id$="-root"] .wp-hero {
+        flex-direction: column;
+    }
+
+    [id$="-root"] .wp-hero-left,
+    [id$="-root"] .wp-hero-image {
+        width: 100%;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    [id$="-root"] .wp-grid-2,
+    [id$="-root"] .wp-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================= WP6 HERO IMAGE FIX ================= */
+
+[id$="-root"] .wp6-hero-image {
+    width: 860px;
+    height: 420px;
+
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    border-radius: 12px;
+    overflow: hidden;
+    display: block;
+}
+
+
+/* ============================================================
+   WP3 Overview – scoped patch
+   Root id: svc-wp3-overview-root
+   ============================================================ */
+
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-header .wp-lead {
+    max-width: 980px;
+}
+
+/* Optional: slightly differentiate WP3 tiles/cards without affecting other WPs */
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-card-compact {
+    border-left: 4px solid rgba(2, 132, 199, 0.45);
+}
+
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-section .wp-par {
+    margin-bottom: 12px;
+}
+
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-tile h5,
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-card h4 {
+    margin-top: 2px;
+}
+
+/* Keep placeholders consistent but local to WP3 */
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-media {
+    height: 120px;
+}
+
+/* Quick jump: allow a bit denser layout for WP3 (more anchors) */
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-jump .wp-jump-btn {
+    font-size: 12.5px;
+    padding: 6px 10px;
+}
+
+/* Footer spacing */
+#svc-wp3-overview-root.wp3_overview-root .wp3_overview-footer {
+    margin-top: 10px;
+}
+
+/* ============================================================
+   WP overview media placeholders (universal, flow-safe)
+   Applies only to WP overview tabs: svc-wpX-overview-root
+   ============================================================ */
+
+div[id^="svc-wp"][id$="-overview-root"] .wp-media.ph {
+  width: 100%;
+  min-height: 140px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background-color: rgba(0,0,0,0.03);
+  overflow: hidden;
+}
+
+/* Optional: make them a bit taller in the scenario cards */
+div[id^="svc-wp"][id$="-overview-root"] #svc-wp4-overview-sec-scenarios .wp-media.ph,
+div[id^="svc-wp"][id$="-overview-root"] #svc-wp5-overview-sec-scenarios .wp-media.ph,
+div[id^="svc-wp"][id$="-overview-root"] #svc-wp6-overview-sec-scenarios .wp-media.ph {
+  min-height: 160px;
+}
+
+
+/* +30% height for scenario media blocks in ALL WP overviews (base height=120px -> 156px) */
+div[id^="svc-wp"][id$="-overview-root"] [id$="-sec-scenarios"] .wp-media.ph {
+  height: 200px !important;
+}
+
+/* Make wp-note-2 visually identical to wp-note (scoped to WP overview tabs) */
+div[id^="svc-wp"][id$="-overview-root"] .wp-note-2 {
+  margin-top: 6px;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* wp-note-2: same styling as wp-note (works even if wp-note doesn't exist) */
+div[id^="svc-wp"][id$="-overview-root"] .wp-note-2{
+  margin-top: 6px;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* wp-note-2: smaller, bolder, grey (scoped to WP overview tabs) */
+div[id^="svc-wp"][id$="-overview-root"] .wp-note-2 {
+  margin-top: 6px;
+  color: #64748b;        /* grey */
+  font-size: 14px;       /* smaller than wp-note */
+  font-weight: 550;      /* bolder */
+  line-height: 1.35;
+}
+
+/* ------------------------------------------------------------
+   Secondary note line (used in WP + Category overview tabs)
+   - smaller, bolder, grey
+   - universal: applies to any overview using .wp-overview-tab
+------------------------------------------------------------ */
+.wp-overview-tab .wp-note-2 {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 550;
+  color: #64748b;
+  line-height: 1.35;
+}

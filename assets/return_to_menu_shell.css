@@ -1,0 +1,80 @@
+.return-to-menu-box {
+  position: fixed;
+  top: 0;
+  right: 24px;
+  left: auto;
+  transform: translateY(-110%);
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 5px 10px;
+  background: #EEF3F8;
+  /* background: #ffffff; */
+    
+  /* λεπτό περίγραμμα, ανοιχτό πάνω */
+  /* border-left: 1px solid #12335A;
+  border-right: 1px solid #12335A;
+  border-bottom: 1px solid #12335A;
+  border-top: 1px solid #12335A; */
+  border-left: 1px solid #C6D4E3;
+  border-right: 1px solid #C6D4E3;
+  border-bottom: 1px solid #C6D4E3;
+  border-top: 1px solid #C6D4E3;
+  /*border-top: 1px solid #ffffff;*/
+
+  transition: transform 0.35s ease-out;
+  pointer-events: none;
+
+  font-family: system-ui, -apple-system, "Inter", "Segoe UI", Roboto, sans-serif;
+  /* font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em; */
+  font-size: 15px;        /* πριν 18px */
+  font-weight: 600;
+  letter-spacing: 0.04em; /* πριν 0.06em */
+  color: #12335A;
+  user-select: none;
+  cursor: pointer;
+}
+
+.return-to-menu-box.visible {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.return-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.return-to-menu-box.visible {
+  transform: translateY(0);
+}
+
+:root {
+  --app-header-height: 60px;
+  --secondary-bar-height: 0px;
+  --return-to-menu-gap: 0px;   /* ⬅️ ΤΟ KNOB */
+}
+
+.return-to-menu-box {
+  position: fixed;
+
+  /* ⬅️ ΕΔΩ ΕΙΝΑΙ Η ΑΛΛΑΓΗ */
+  top: calc(
+    var(--app-header-height)
+  + var(--secondary-bar-height)
+  + var(--return-to-menu-gap)
+  );
+
+  right: 5px;
+
+  transform: translateY(-230%);
+  z-index: 999;
+
+  /* όλα τα υπόλοιπα μένουν ίδια */
+}

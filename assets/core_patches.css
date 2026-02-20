@@ -1,0 +1,364 @@
+/* Make tab buttons resizable by JS (width controlled) */
+.wp-tab-bar .tab-btn,
+.tool-tab-bar .tab-btn {
+  position: relative;
+  flex: 0 0 auto;         /* allow explicit width */
+}
+
+/* Add a visible resize handle on the right edge */
+.tab-btn .resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  cursor: ew-resize;
+  opacity: 0.35;
+}
+
+.tab-btn .resize-handle:hover {
+  opacity: 0.75;
+}
+
+/* Optional: show a subtle grip */
+.tab-btn .resize-handle::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 4px;
+  width: 2px;
+  height: 50%;
+  background: #9ca3af;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   TAB BAR ARROWS (WP & TOOL) – only shown on overflow
+   Does NOT interfere with drag-to-scroll (buttons are outside bars)
+   ============================================================ */
+
+#wp-bar-container,
+#tool-bar-container {
+  position: relative; /* anchor for absolute arrows */
+}
+
+/* Add side padding so arrows don't cover first/last tab */
+#wp-bar-container .wp-tab-bar,
+#tool-bar-container .tool-tab-bar {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+/* Shared arrow button */
+.tabbar-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 28px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 0;
+  margin: 0;
+  z-index: 50;
+
+  display: none; /* JS will toggle based on overflow */
+
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Left / right placement */
+.tabbar-arrow.left  { left: 2px; }
+.tabbar-arrow.right { right: 2px; }
+
+/* Icon inside (SVG as background so you can swap easily) */
+.tabbar-arrow .icon {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+  opacity: 0.9;
+}
+
+/* Disabled state */
+.tabbar-arrow.disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Optional: hover feedback */
+.tabbar-arrow:not(.disabled):hover {
+  background: #f2f6fb;
+}
+
+/* ============================================================
+   PATCH: Make overflow arrows match container height
+   (and stay inside the underline-safe area)
+   ============================================================ */
+
+/* Let the arrow buttons stretch vertically with the container */
+#wp-bar-container .tabbar-arrow,
+#tool-bar-container .tabbar-arrow {
+  top: 0;                 /* override centering */
+  bottom: 0;              /* stretch full height */
+  transform: none;        /* disable translateY */
+  height: auto;           /* allow stretching */
+  display: none;          /* JS still controls show/hide */
+}
+
+/* Keep them out of the underline reserved area (6px)
+   so they don't cover the orange line zone */
+#wp-bar-container .tabbar-arrow,
+#tool-bar-container .tabbar-arrow {
+  bottom: 6px;            /* matches padding-bottom: 6px of the bar */
+}
+
+/* Make icon stay centered inside tall arrows */
+#wp-bar-container .tabbar-arrow .icon,
+#tool-bar-container .tabbar-arrow .icon {
+  height: 100%;
+  background-size: 12px 12px;
+}
+
+
+/* ============================================================
+   VERTICAL RESIZE FOR ORCHESTRATION BAR CONTAINERS
+   Targets:
+   - #wp-bar-container (primary)
+   - #tool-bar-container (secondary)  [optional]
+   Notes:
+   - Resizes the CONTAINER height (not the buttons)
+   - Buttons follow container height (100%)
+   ============================================================ */
+
+#wp-bar-container,
+#tool-bar-container {
+  position: relative; /* anchor handles */
+}
+
+/* Make the actual bars fill the container height */
+#wp-bar-container .wp-tab-bar,
+#tool-bar-container .tool-tab-bar {
+  height: 100%;
+  align-items: stretch; /* children can become full height */
+}
+
+/* Make the tab items follow bar height */
+#wp-bar-container .wp-tab-bar .tab-btn,
+#tool-bar-container .tool-tab-bar .tab-btn {
+  height: 100%;
+  display: flex;
+  align-items: center; /* vertical centering of text */
+}
+
+/* --- Top/Bottom resize handles (thin) --- */
+.tabbar-v-handle {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;              /* thin handle */
+  z-index: 60;
+  cursor: ns-resize;
+  user-select: none;
+  background: transparent;  /* invisible by default */
+}
+
+/* handle positions */
+.tabbar-v-handle.top { top: 0; }
+.tabbar-v-handle.bottom { bottom: 0; }
+
+/* subtle hover feedback (SCADA-safe) */
+.tabbar-v-handle:hover {
+  background: rgba(18, 51, 90, 0.06);
+}
+
+/* optional: a micro-line indicator */
+.tabbar-v-handle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  background: rgba(123, 143, 168, 0.35);
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   FIX #1: leave room for "selected underline" (orange line)
+   FIX #2: prevent vertical scrolling while resizing
+   ============================================================ */
+
+#wp-bar-container,
+#tool-bar-container {
+  overflow-y: hidden; /* <-- IMPORTANT: stop vertical scroll in container */
+}
+
+/* Leave a few pixels for underline at the bottom of selected tab */
+#wp-bar-container .wp-tab-bar,
+#tool-bar-container .tool-tab-bar {
+  height: 100%;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding-bottom: 6px;   /* <-- this reserves space for the orange underline */
+  overflow-y: hidden;    /* <-- prevent vertical scroll inside bar */
+}
+
+/* Make tab buttons follow bar height BUT not consume the underline padding */
+#wp-bar-container .wp-tab-bar .tab-btn,
+#tool-bar-container .tool-tab-bar .tab-btn {
+  height: calc(100% - 6px);  /* <-- key: keep underline visible */
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Handles: do NOT steal space and do NOT scroll the page */
+.tabbar-v-handle {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  z-index: 60;
+  cursor: ns-resize;
+  user-select: none;
+  background: transparent;
+  touch-action: none; /* <-- IMPORTANT: prevents page scroll while dragging */
+}
+
+.tabbar-v-handle.top { top: 0; }
+.tabbar-v-handle.bottom { bottom: 0; }
+
+/* subtle hover feedback */
+.tabbar-v-handle:hover {
+  background: rgba(18, 51, 90, 0.06);
+}
+
+/* micro-line indicator */
+.tabbar-v-handle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  background: rgba(123, 143, 168, 0.35);
+  border-radius: 2px;
+}
+
+/* While dragging, we want to avoid accidental text selection */
+.tabbar-v-handle {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ============================================================
+   BAR HEIGHT QUICK CONTROLS (+ / -) POPOVER
+   For: #wp-bar-container, #tool-bar-container
+   ============================================================ */
+
+.tabbar-size-popover {
+  position: absolute;
+  top: 10px;              /* keep it away from top handle */
+  right: 26px;            /* avoid the right overflow arrow zone */
+  z-index: 80;
+
+  display: none;          /* JS toggles */
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+
+  user-select: none;
+}
+
+.tabbar-size-popover.visible {
+  display: inline-flex;
+}
+
+.tabbar-size-popover .lbl {
+  font-size: 12px;
+  color: #0f2945;
+  opacity: 0.85;
+  margin-right: 2px;
+}
+
+.tabbar-size-popover button {
+  width: 26px;
+  height: 22px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.tabbar-size-popover button:hover {
+  background: #eef6ff;
+}
+
+/* disabled (when at min/max) */
+.tabbar-size-popover button.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   TAB WIDTH QUICK CONTROLS (vertical + / - popover at cursor)
+   ============================================================ */
+
+.tabwidth-popover {
+  position: fixed;   /* positioned at cursor */
+  z-index: 120;
+
+  display: none;     /* JS toggles */
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+
+  user-select: none;
+}
+
+.tabwidth-popover.visible {
+  display: flex;
+}
+
+.tabwidth-popover button {
+  width: 26px;
+  height: 22px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.tabwidth-popover button:hover {
+  background: #eef6ff;
+}
+
+.tabwidth-popover button.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}

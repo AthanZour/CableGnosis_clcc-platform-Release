@@ -1,0 +1,68 @@
+/* ===========================
+   SVC: Asset Degradation (tab-scoped)
+   =========================== */
+#svc-hvdc-asset-degradation-page .lcc-hero{
+  height: 220px;
+  border-radius: 14px;
+  margin: 10px 0 14px 0;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+#svc-hvdc-asset-degradation-page .lcc-note{
+  margin: 10px 0 14px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.03);
+}
+
+#svc-hvdc-asset-degradation-page .lcc-kpi-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 10px 0 16px 0;
+}
+
+#svc-hvdc-asset-degradation-page .lcc-kpi-card{
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: #fff;
+}
+
+#svc-hvdc-asset-degradation-page .lcc-kpi-title{
+  font-weight: 600;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+#svc-hvdc-asset-degradation-page .lcc-kpi-value{
+  font-weight: 700;
+  font-size: 22px;
+  margin-top: 6px;
+}
+
+#svc-hvdc-asset-degradation-page .lcc-kpi-sub{
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+@media (max-width: 1100px){
+  #svc-hvdc-asset-degradation-page .lcc-kpi-grid{
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+}
+
+/* Asset Degradation tab only: give the hero more height so crop is less aggressive */
+#svc-hvdc-asset-degradation-page .lcc-hero {
+  min-height: 320px;     /* ήταν ουσιαστικά μικρότερο -> τώρα πιο “άνετο” */
+  height: 320px;
+}
+
+/* optional: λίγο πιο μεγάλο σε μεγάλα screens */
+@media (min-width: 1200px) {
+  #svc-hvdc-asset-degradation-page .lcc-hero {
+    min-height: 360px;
+    height: 360px;
+  }
+}

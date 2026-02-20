@@ -1,0 +1,88 @@
+/* ========== Data Timeline Viewer placeholder (timeline-specific) ========== */
+
+.timeline_ph_root {
+  margin: 18px 0 12px 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.timeline_ph_header h2 {
+  margin: 0 0 6px 0;
+}
+
+.timeline_ph_header p {
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.timeline_ph_grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.timeline_ph_card {
+  padding: 12px 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.015);
+}
+
+.timeline_ph_card h4 {
+  margin: 0 0 8px 0;
+}
+
+.timeline_ph_list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.timeline_ph_media {
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 1px dashed rgba(0,0,0,0.18);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.01);
+}
+
+.timeline_ph_media_hint {
+  opacity: 0.7;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .timeline_ph_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timeline_ph_media {
+  overflow: hidden;
+}
+
+/* full-width media slot with fixed height (crop vertically) */
+.timeline_ph_media{
+  width: 100%;
+  height: 280px;        /* άλλαξέ το σε 240/320 ανάλογα */
+  min-height: unset;
+  margin-top: 12px;
+  overflow: hidden;     /* κόβει ό,τι περισσεύει */
+  border-radius: 14px;
+}
+
+.timeline_ph_media_img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;    /* γεμίζει πλάτος, κόβει ύψος */
+  object-position: center;
+}

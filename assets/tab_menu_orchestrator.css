@@ -1,0 +1,453 @@
+/* ============================================================
+   TAB TOOL MENU – GENERIC (INLINE → STICKY)
+   Used by tab_menu_orchestrator
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   TAB TOOL MENU – WRAPPER (STICKY CONTAINER)
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-wrapper"] {
+    /* sticky behavior */
+    position: sticky;
+    top: 0;                 /* hardened against parent quirks */
+    z-index: 200;
+
+    /* layout */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    /* stability */
+    align-self: stretch;
+}
+
+/* Keyboard focus */
+[id$="-root"] .tab-tool-menu-item:focus-visible {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* ------------------------------------------------------------
+   HIDE BUTTON
+   ------------------------------------------------------------ */
+
+[id$="-root"] .tab-tool-menu-hide {
+    margin-left: auto;
+
+    background: transparent;
+    border: none;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    font-size: 13px;
+    color: #374151;
+    cursor: pointer;
+}
+
+[id$="-root"] .tab-tool-menu-hide:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* ------------------------------------------------------------
+   COLLAPSED SHOW MENU
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-show"] {
+    position: fixed;
+    top: 140px;
+    left: 0;
+
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 0 999px 999px 0;
+
+    padding: 4px 12px;
+
+    font-size: 13px;
+    cursor: pointer;
+    z-index: 40;
+}
+
+
+/* ============================================================
+   PATCH: FORCE CORRECT STICKY BEHAVIOR
+   (generic & reusable)
+   ============================================================ */
+
+/* Ensure sticky wrapper has full scroll context */
+[id$="-root"] {
+    position: relative;
+}
+
+
+
+/* Optional: ensure menu visually touches top */
+[id$="-root"] [id$="-menu"] {
+    margin-top: 0;
+}
+
+
+/* ============================================================
+   PATCH: FIX SHOW MENU POSITIONING
+   Scoped & reusable
+   ============================================================ */
+
+/* Override fixed positioning */
+[id$="-root"] [id$="-menu-show"] {
+    position: sticky !important;
+    top: 60px;                 /* same as menu wrapper */
+    left: auto !important;
+    right: 12px;
+
+    margin-left: auto;
+    margin-top: 6px;
+
+    z-index: 0;
+}
+
+
+/* ============================================================
+   PATCH: BUTTON COLORS & CENTERED MENU
+   ============================================================ */
+
+
+
+
+/* --- Ensure segmented bar stays centered --- */
+[id$="-root"] .tab-tool-menu {
+    justify-content: center;
+}
+
+
+
+/* ------------------------------------------------------------
+   TAB TOOL MENU – CONTAINER
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu"] {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    background-color: #B6E8F3;
+    padding: 0px 12px;
+}
+
+/* Menu background override */
+[id$="-root"] [id$="-menu"] {
+    background-color: #99C5E5 !important;
+}
+
+
+/* ============================================================
+   PATCH: HIDE / SHOW ICON SIZING + POSITION NUDGE
+   ============================================================ */
+
+[id$="-root"] .tab-menu-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+/* Ensure buttons don't stretch */
+[id$="-root"] .tab-tool-menu-hide,
+[id$="-root"] .tab-tool-menu-collapsed {
+    line-height: 0;
+    padding: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ------------------------------------------------------------
+   TAB MENU – SHOW WRAPPER
+   ------------------------------------------------------------ */
+
+[id$="-root"] .tab-tool-menu-show-wrapper {
+    display: flex;
+    justify-content: center;
+
+    position: sticky;
+    top: 58px;
+    z-index: 40;
+
+    /* compensate DOM vertical offset */
+    margin-top: -16px;   /* tune: -24px έως -32px */
+}
+
+/* Ensure button itself doesn't drift */
+[id$="-root"] .tab-tool-menu-collapsed {
+    margin: 0 auto;
+}
+
+/* ============================================================
+   PATCH: FORCE SHOW MENU TO SAME STICKY TOP AS MENU
+   ============================================================ */
+
+
+
+/* ============================================================
+   TAB MENU – STICKY TOP OFFSET (GLOBAL-SAFE)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   GLOBAL STICKY KNOBS (single source of truth)
+   ------------------------------------------------------------ */
+:root {
+    --app-header-sticky-offset: 70px;   /* height of main header */
+    --tab-menu-sticky-gap: -12px;        /* gap below header */
+    /* show button fine tuning */
+    --tab-menu-show-shift: -0px;
+
+    /* NEW: show button sticky gap (relative to header) */
+    --tab-menu-show-sticky-gap: 12px;
+}
+
+
+/* ------------------------------------------------------------
+   TAB TOOL MENU – STICKY WRAPPER
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-wrapper"] {
+    position: sticky !important;
+    top: calc(
+        var(--app-header-sticky-offset)
+        + var(--tab-menu-sticky-gap)
+    ) !important;
+
+    z-index: 200;
+}
+
+
+/* ------------------------------------------------------------
+   SHOW BUTTON WRAPPER – POSITIONING CONTROL
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-show-wrapper"] {
+    position: relative;
+    transform: translateY(var(--tab-menu-show-shift));
+    z-index: 210;
+}
+
+[id$="-root"] [id$="-menu-show-wrapper"] {
+    position: sticky;
+
+    top: calc(
+        var(--app-header-sticky-offset)
+        + var(--tab-menu-show-sticky-gap)
+    );
+
+    /* micro alignment */
+    transform: translateY(var(--tab-menu-show-shift));
+
+    z-index: 210;
+}
+
+/* ------------------------------------------------------------
+   SAFETY: prevent legacy CSS from re-locking layout
+   ------------------------------------------------------------ */
+
+.tab-tool-menu-show-wrapper {
+    margin: 0 !important;
+    position: static !important;
+}
+
+
+/* ============================================================
+   TAB MENU – HIDE ICON CIRCLE
+   ============================================================ */
+
+[id$="-root"] .tab-tool-menu-hide .tab-menu-hide-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+    background-color: #ffffff;
+    
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+/* Hover feedback */
+[id$="-root"] .tab-tool-menu-hide:hover .tab-menu-hide-icon-wrapper {
+    background-color: #ffffff;
+    transform: scale(0.85);
+}
+
+/* Icon inside the circle */
+[id$="-root"] .tab-tool-menu-hide .tab-menu-icon {
+    width: 14px;
+    height: 14px;
+}
+
+/* ------------------------------------------------------------
+   TAB MENU ITEM – BASE
+   ------------------------------------------------------------ */
+
+[id$="-root"] .tab-tool-menu-item {
+    appearance: none;
+    border: none;
+
+    /* base visual */
+    background-color: #ffffff;
+    color: #1f2937;
+    font-weight: 400;
+
+    /* sizing */
+    padding: 4px 14px;
+    line-height: 1.1;
+    border-radius: 999px;
+
+    /* behavior */
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        background-color 120ms ease,
+        box-shadow 120ms ease;
+}
+
+
+/* ------------------------------------------------------------
+   TAB MENU ITEM – KEYBOARD FOCUS
+   ------------------------------------------------------------ */
+
+[id$="-root"] .tab-tool-menu-item:focus-visible {
+    background-color: #12335A;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+[id$="-root"] .tab-tool-menu-item:hover {
+    background-color: #f5f7fa;
+}
+
+[id$="-root"] .tab-tool-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    background-color: transparent;
+    border-radius: 999px;
+
+    /* visual thickness */
+    padding: 4px 6px;
+    padding-top: -3px;
+    padding-bottom: -3px;
+}
+
+/* ------------------------------------------------------------
+   TAB MENU ITEM – ACTIVE / PRESSED
+   ------------------------------------------------------------ */
+
+[id$="-root"] .tab-tool-menu-item:active {
+    background-color: #12335A;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: none;
+}
+
+/* ============================================================
+   PATCH – TAB MENU OUTER CONTAINER (SHELL ONLY)
+   ============================================================ */
+
+[id$="-root"] .tab-tool-menu-container-shell {
+    padding-top: -1px;      /* main vertical knob */
+    padding-bottom: 0px;
+
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+[id$="-root"] .tab-tool-menu {
+    padding-top: -15px;
+}
+
+[id$="-root"] .tab-tool-menu-show-wrapper {
+    transform: translateY(-15px);
+}
+
+
+
+:root {
+    /* existing */
+    --app-header-sticky-offset: 56px;
+    --tab-menu-sticky-gap: -6px;
+
+    /* ================================
+       SHOW BUTTON – INDEPENDENT KNOBS
+       ================================ */
+
+    /* size */
+    --tab-menu-show-size: 30px;        /* κουμπί (πλάτος/ύψος) */
+    --tab-menu-show-icon-size: 18px;   /* icon μέσα */
+
+    /* position when NOT sticky (normal flow) */
+    --tab-menu-show-normal-shift: -10px; /* (+) κάτω | (-) πάνω */
+
+    /* position when sticky */
+    --tab-menu-show-sticky-gap: -5px;   /* offset από header */
+}
+
+
+/* ------------------------------------------------------------
+   SHOW MENU BUTTON – SIZE
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-show"] {
+    width: var(--tab-menu-show-size);
+    height: var(--tab-menu-show-size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[id$="-root"] [id$="-menu-show"] .tab-menu-icon {
+    width: var(--tab-menu-show-icon-size);
+    height: var(--tab-menu-show-icon-size);
+}
+
+/* ------------------------------------------------------------
+   SHOW MENU – NORMAL FLOW POSITION
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-show-wrapper"] {
+    transform: translateY(var(--tab-menu-show-normal-shift));
+}
+
+--tab-menu-show-normal-shift: 4px;  /* το ανεβάζεις */
+
+
+/* ------------------------------------------------------------
+   SHOW MENU – STICKY POSITION (INDEPENDENT)
+   ------------------------------------------------------------ */
+
+[id$="-root"] [id$="-menu-show-wrapper"] {
+    position: sticky;
+    top: calc(
+        var(--app-header-sticky-offset)
+        + var(--tab-menu-show-sticky-gap)
+    );
+
+    z-index: 210;
+}
+
+--tab-menu-show-sticky-gap: 12px;  /* πάνω/κάτω όταν sticky */
+
+

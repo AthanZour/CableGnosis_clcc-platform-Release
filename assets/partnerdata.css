@@ -1,0 +1,40 @@
+.partner-tab {
+    font-family: "Segoe UI", Arial, sans-serif;
+    padding: 20px;
+    background: #ffffff;
+    color: #333;
+}
+
+.partner-controls {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.partner-icon {
+    width: 64px;
+    height: 64px;
+    margin-right: 12px;
+}
+
+.action-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    margin: 6px 4px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.action-button:hover {
+    background: #0056b3;
+}
+
+.device-info, .system-summary {
+    background: #f4f7fb;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 20px;
+}
