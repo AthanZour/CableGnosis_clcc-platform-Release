@@ -1,0 +1,286 @@
+Folder PATH listing for volume Windows
+Volume serial number is E0B9-AA34
+C:.
+¦   app.py
+¦   readme.md
+¦   structure.txt
+¦   
++---.ipynb_checkpoints
+¦       app-checkpoint.py
+¦       readme-checkpoint.md
+¦       
++---assets
+¦   ¦   cablegnosis_ring.png
+¦   ¦   core.css
+¦   ¦   favicon.ico
+¦   ¦   favicon.png
+¦   ¦   GG_main_icon.jpg
+¦   ¦   hvdc_cable.jpg
+¦   ¦   hvdc_line.png
+¦   ¦   iot_device.png
+¦   ¦   monitoring.css
+¦   ¦   overview.css
+¦   ¦   overview.js
+¦   ¦   partnerdata.css
+¦   ¦   partnerdata.js
+¦   ¦   patches.css
+¦   ¦   pmu_left.png
+¦   ¦   pmu_right.png
+¦   ¦   scada_pan.js
+¦   ¦   subsea-cables-internet-ai-spooky-pooka-illustration.jpg
+¦   ¦   subsea-cables-internet-ai-spooky-pooka-illustration.webp
+¦   ¦   Undersea-Cables.jpeg
+¦   ¦   
+¦   +---css_versions
+¦   ¦       custom.css.backup
+¦   ¦       tabs.css.backup
+¦   ¦       
+¦   +---js_versions
+¦   ¦       scada_pan.js.backup
+¦   ¦       scada_pan.js.backup2
+¦   ¦       
+¦   L---prev_versions
+¦           custom.css.backup.v2.2
+¦           custom.css.backup.v2.3
+¦           custom.css.backup.v2.4
+¦           custom.css.backup.v3.0.1
+¦           custom.css.backup.v3.0.2
+¦           custom.css.backup.v3.2
+¦           custom.css.backupv3.4
+¦           custom.js.backup1
+¦           custom.js.backup2
+¦           custom.js.backup3
+¦           
++---data
+¦   ¦   readme.md
+¦   ¦   
+¦   +---generated
+¦   ¦   +---metadata
+¦   ¦   +---monitoring
+¦   ¦   ¦       ucy_load.csv
+¦   ¦   ¦       ucy_temp.csv
+¦   ¦   ¦       
+¦   ¦   +---partner
+¦   ¦   ¦       partner_cable_metrics.0.csv
+¦   ¦   ¦       partner_cable_metrics.1.csv
+¦   ¦   ¦       partner_cable_metrics.5.csv
+¦   ¦   ¦       
+¦   ¦   +---synthetic
+¦   ¦   ¦       cablegnosis_synthetic_dataset.json
+¦   ¦   ¦       
+¦   ¦   +---timeline
+¦   ¦   ¦       interactive_tab_dataset.json
+¦   ¦   ¦       
+¦   ¦   L---uptime
+¦   ¦           uptime_generated_dataset.json
+¦   ¦           
+¦   +---metadata
+¦   ¦       latest.json
+¦   ¦       service_relations_20260129_235423.json
+¦   ¦       service_relations_20260129_235745.json
+¦   ¦       service_relations_20260129_235748.json
+¦   ¦       service_relations_20260130_001221.json
+¦   ¦       workpackages_registry_20260201_024016.json
+¦   ¦       workpackages_registry_20260201_024026.json
+¦   ¦       workpackages_registry_20260201_024047.json
+¦   ¦       workpackages_registry_20260201_024059.json
+¦   ¦       workpackages_registry_20260201_024107.json
+¦   ¦       workpackages_registry_20260201_024119.json
+¦   ¦       workpackages_registry_20260201_024126.json
+¦   ¦       
+¦   L---raw
++---docs
+¦   ¦   README.md
+¦   ¦   
+¦   +---deprecations
+¦   ¦       DEPRECATED_UI_ORCHESTRATOR_CONTEXT.md
+¦   ¦       
+¦   L---planned
+¦           css_cleanup_after_tab_context_refactor.md
+¦           UI_FUTURE_FEATURES.md
+¦           wp-default-content-and-tool-selection.md
+¦           
++---logic
+¦   ¦   data.py
+¦   ¦   synthetic_dataset_generator.py
+¦   ¦   
+¦   +---.ipynb_checkpoints
+¦   ¦       data-checkpoint.py
+¦   ¦       synthetic_dataset_generator-checkpoint.py
+¦   ¦       
+¦   L---__pycache__
+¦           data.cpython-313.pyc
+¦           synthetic_dataset_generator.cpython-313.pyc
+¦           
++---prev_versions
+¦       app.py.backup.v3.0.2
+¦       app.py.backup_v3.0
+¦       app.py.backup_v3.1
+¦       app.py.backup_v3.2
+¦       app.py.backup_v3.3
+¦       app.py.backup_v3.4
+¦       app.py.backup_v3.5
+¦       app.py.v3.0.1
+¦       monitoring.py.backup.v3.0.2
+¦       
++---tabs
+¦   ¦   cat-awareness.py
+¦   ¦   cat-human.py
+¦   ¦   cat-monitoring.py
+¦   ¦   cat-performance.py
+¦   ¦   components.py
+¦   ¦   generator.py
+¦   ¦   microservices.py
+¦   ¦   microservices_a.py
+¦   ¦   microservices_b.py
+¦   ¦   monitoring.py
+¦   ¦   overview.py
+¦   ¦   partner_data.py
+¦   ¦   services_meta.py
+¦   ¦   svc_diagnostics - Αντιγραφή (2).py
+¦   ¦   svc_diagnostics - Αντιγραφή (3).py
+¦   ¦   svc_diagnostics - Αντιγραφή (4).py
+¦   ¦   svc_diagnostics - Αντιγραφή (5).py
+¦   ¦   svc_diagnostics - Αντιγραφή (6).py
+¦   ¦   svc_diagnostics - Αντιγραφή.py
+¦   ¦   svc_diagnostics.py
+¦   ¦   svc_lifecycle.py
+¦   ¦   svc_monitoring_analytics.py
+¦   ¦   timeline.py
+¦   ¦   workpackages_meta.py
+¦   ¦   wp1.py
+¦   ¦   wp2.py
+¦   ¦   wp3.py
+¦   ¦   wp4.py
+¦   ¦   wp5.py
+¦   ¦   wp6.py
+¦   ¦   wp7.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---.ipynb_checkpoints
+¦   ¦       cat-awareness-checkpoint.py
+¦   ¦       cat-human-checkpoint.py
+¦   ¦       cat-monitoring-checkpoint.py
+¦   ¦       cat-performance-checkpoint.py
+¦   ¦       components-checkpoint.py
+¦   ¦       generator-checkpoint.py
+¦   ¦       microservices-checkpoint.py
+¦   ¦       microservices_b-checkpoint.py
+¦   ¦       monitoring-checkpoint.py
+¦   ¦       monitoring.py.backup.v3.0-checkpoint.1
+¦   ¦       overview-checkpoint.py
+¦   ¦       partner_data-checkpoint.py
+¦   ¦       services_meta-checkpoint.py
+¦   ¦       svc_diagnostics-checkpoint.py
+¦   ¦       svc_lifecycle-checkpoint.py
+¦   ¦       svc_monitoring_analytics-checkpoint.py
+¦   ¦       timeline-checkpoint.py
+¦   ¦       wp1-checkpoint.py
+¦   ¦       wp2-checkpoint.py
+¦   ¦       wp3-checkpoint.py
+¦   ¦       wp4-checkpoint.ipynb
+¦   ¦       wp4-checkpoint.py
+¦   ¦       wp5-checkpoint.py
+¦   ¦       wp6-checkpoint.py
+¦   ¦       wp7-checkpoint.py
+¦   ¦       
+¦   +---data
+¦   +---prev_versions
+¦   ¦       monitoring.py.backup.v2.0
+¦   ¦       monitoring.py.backup.v2.1
+¦   ¦       monitoring.py.backup.v2.2
+¦   ¦       monitoring.py.backup.v2.3
+¦   ¦       monitoring.py.backup.v2.4
+¦   ¦       monitoring.py.backup.v3.0.1
+¦   ¦       partner_data.py.backup.v3.0.1
+¦   ¦       
+¦   +---readmes
+¦   ¦       readme_wp_files_purpose.md
+¦   ¦       
+¦   L---__pycache__
+¦           app.cpython-313.pyc
+¦           cat-awareness.cpython-313.pyc
+¦           cat-human.cpython-313.pyc
+¦           cat-monitoring-Copy1.cpython-313.pyc
+¦           cat-monitoring.cpython-313.pyc
+¦           cat-performance-Copy1.cpython-313.pyc
+¦           cat-performance-Copy2.cpython-313.pyc
+¦           cat-performance.cpython-313.pyc
+¦           category_monitoring-Copy1.cpython-313.pyc
+¦           category_monitoring.cpython-313.pyc
+¦           components.cpython-312.pyc
+¦           components.cpython-313.pyc
+¦           generator.cpython-312.pyc
+¦           generator.cpython-313.pyc
+¦           microservices - Αντιγραφή (2).cpython-313.pyc
+¦           microservices - Αντιγραφή.cpython-313.pyc
+¦           microservices.cpython-312.pyc
+¦           microservices.cpython-313.pyc
+¦           microservices_a.cpython-313.pyc
+¦           microservices_b.cpython-313.pyc
+¦           monitoring - Αντιγραφή.cpython-313.pyc
+¦           monitoring.cpython-312.pyc
+¦           monitoring.cpython-313.pyc
+¦           overview.cpython-312.pyc
+¦           overview.cpython-313.pyc
+¦           partner_data.cpython-313.pyc
+¦           services_meta.cpython-313.pyc
+¦           svc_diagnostics - Αντιγραφή (2).cpython-313.pyc
+¦           svc_diagnostics - Αντιγραφή (3).cpython-313.pyc
+¦           svc_diagnostics - Αντιγραφή (4).cpython-313.pyc
+¦           svc_diagnostics - Αντιγραφή (5).cpython-313.pyc
+¦           svc_diagnostics - Αντιγραφή (6).cpython-313.pyc
+¦           svc_diagnostics - Αντιγραφή.cpython-313.pyc
+¦           svc_diagnostics.cpython-313.pyc
+¦           svc_lifecycle - Αντιγραφή (2).cpython-313.pyc
+¦           svc_lifecycle - Αντιγραφή.cpython-313.pyc
+¦           svc_lifecycle.cpython-313.pyc
+¦           svc_monitoring_analytics.cpython-313.pyc
+¦           timeline.cpython-312.pyc
+¦           timeline.cpython-313.pyc
+¦           workpackages_meta.cpython-313.pyc
+¦           wp1 - Αντιγραφή.cpython-313.pyc
+¦           wp1.cpython-313.pyc
+¦           wp2 - Αντιγραφή.cpython-313.pyc
+¦           wp2.cpython-313.pyc
+¦           wp3.cpython-313.pyc
+¦           wp4 - Αντιγραφή.cpython-313.pyc
+¦           wp4.cpython-313.pyc
+¦           wp5 - Αντιγραφή.cpython-313.pyc
+¦           wp5.cpython-313.pyc
+¦           wp6.cpython-313.pyc
+¦           wp7 - Αντιγραφή - Αντιγραφή (2).cpython-313.pyc
+¦           wp7 - Αντιγραφή - Αντιγραφή.cpython-313.pyc
+¦           wp7 - Αντιγραφή.cpython-313.pyc
+¦           wp7.cpython-313.pyc
+¦           __init__.cpython-312.pyc
+¦           __init__.cpython-313.pyc
+¦           
++---tabs_core
+¦   ¦   interactive_timeline_core.py
+¦   ¦   
+¦   +---.ipynb_checkpoints
+¦   ¦       interactive_timeline_core-checkpoint.py
+¦   ¦       
+¦   L---__pycache__
+¦           interactive_timeline_core.cpython-313.pyc
+¦           
+L---utils
+    ¦   paths.py
+    ¦   routes.py
+    ¦   routes_partnerdata.py
+    ¦   __init__.py
+    ¦   
+    +---prev_versions
+    ¦       routes.py.v2.0
+    ¦       
+    L---__pycache__
+            data.cpython-312.pyc
+            data.cpython-313.pyc
+            paths.cpython-313.pyc
+            routes.cpython-312.pyc
+            routes.cpython-313.pyc
+            routes_partnerdata.cpython-313.pyc
+            __init__.cpython-312.pyc
+            __init__.cpython-313.pyc
+            

@@ -1,0 +1,46 @@
+{
+  "WP1": {
+    "title": "Project Management & Coordination",
+    "tasks": {
+      "T1.1": {
+        "deliverable": "D1.1",
+        "version": "v1"
+      }
+    }
+  },
+  "WP2": {
+    "title": "System Architecture & Integration",
+    "tasks": {
+      "T2.3": {
+        "deliverable": "D2.3",
+        "version": "v1"
+      }
+    }
+  },
+  "WP3": {
+    "title": "Data Management & Analytics",
+    "tasks": {
+      "T3.1": {
+        "deliverable": "D3.1",
+        "version": "v1"
+      },
+      "T3.2": {
+        "deliverable": "D3.2",
+        "version": "v1"
+      }
+    }
+  },
+  "WP4": {
+    "title": "Monitoring and Diagnostics",
+    "tasks": {
+      "T4.1": {
+        "deliverable": "D4.1",
+        "version": "v1"
+      },
+      "T4.5": {
+        "deliverable": "D4.5",
+        "version": "v1"
+      }
+    }
+  }
+}
