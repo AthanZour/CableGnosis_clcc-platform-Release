@@ -14,7 +14,6 @@ while remaining lightweight and demo-friendly.
 
 ## Project Structure
 
-```text
 .
 ├── app.py
 ├── README.md
@@ -232,4 +231,5 @@ Further refinement, feature expansion, and performance optimization will continu
 4. **Backwards-compatible wiring & stability safeguards**
    - Avoided changes to discovery and tab loading.
    - Prevented forced mode switching on hyperlink navigation to respect per-category requirements.
+
    - Included initialization-order safeguards to avoid NameError issues when building registries.
